@@ -1,0 +1,3 @@
+name: Cryptkeeper-t3
+main: com.tenjava.entries.Cryptkeeper.t3.TenJava
+version: '${project.version}'
