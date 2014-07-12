@@ -15,6 +15,7 @@ environments:
     - webEnvironment
     - foodEnvironment
     - lavaEnvironment
+    - airEnvironment
 
 foodEnvironment:
     materials:
@@ -142,6 +143,11 @@ lavaEnvironment:
         - STATIONARY_LAVA
         - OBSIDIAN
     chance: 0.03
+
+airEnvironment:
+    materials:
+        - AIR
+    chance: 0.1
 
 startY: 64
 minHeight: 2
