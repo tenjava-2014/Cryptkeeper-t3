@@ -20,3 +20,8 @@ exploding_chicken:
     chance: 0.2
     worlds:
         - world
+
+vampire_pig:
+    chance: 0.1
+    worlds:
+        - world
