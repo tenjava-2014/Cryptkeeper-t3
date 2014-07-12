@@ -125,7 +125,7 @@ netherEnvironment:
 
 lavaEnvironment:
     materials:
-        - LAVA_STATIONARY
+        - STATIONARY_WATER
         - OBSIDIAN
     chance: 0.03
 
