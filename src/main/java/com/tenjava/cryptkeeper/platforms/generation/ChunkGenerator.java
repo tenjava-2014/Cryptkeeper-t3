@@ -58,9 +58,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
                 int z = random.nextInt(16);
                 Block highest = world.getHighestBlockAt(cx + x, cz + z);
 
-                if (highest.getType().isSolid()) {
+                //if (highest.getType().isSolid()) {
                     world.spawnEntity(highest.getLocation().add(0, 2, 0), type);
-                }
+                //}
             }
         }
 

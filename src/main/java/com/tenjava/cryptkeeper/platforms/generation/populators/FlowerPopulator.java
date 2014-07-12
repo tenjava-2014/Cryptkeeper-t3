@@ -25,12 +25,16 @@ public class FlowerPopulator extends BlockPopulator {
         if (!random.nextBoolean()) {
             return;
         }
+
         int target = 3 + random.nextInt(3);
+
         for (int i = 0; i < target; i++) {
             Block block = Util.getSolidBlock(chunk);
+
             if (!block.getType().equals(Material.GRASS) && !block.getType().equals(Material.DIRT)) {
                 continue;
             }
+
             block = block.getRelative(BlockFace.UP);
             block.setType(flowers.get(random.nextInt(flowers.size())));
         }
