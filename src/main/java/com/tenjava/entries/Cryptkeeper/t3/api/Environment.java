@@ -20,7 +20,7 @@ public class Environment {
     }
 
     public Material getMaterial(int y) {
-        if (y <= 3)
+        if (y > 64 && y < 72)
             return materials.get(random.nextInt(materials.size()));
         return Material.AIR;
     }
