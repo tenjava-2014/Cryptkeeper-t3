@@ -18,6 +18,7 @@ public class YChecker implements Runnable {
     public void run() {
         for (Player player : world.getPlayers()) {
             if (!player.getGameMode().equals(GameMode.CREATIVE) && player.getLocation().getY() < minY && !player.isDead()) {
+                System.out.println("Killed: " + player.getName());
                 player.damage(player.getHealth());
             }
         }
