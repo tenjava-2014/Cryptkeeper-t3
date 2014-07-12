@@ -39,7 +39,7 @@ flying_animal:
         - world
 
 random_age:
-    chance: 0.15
+    chance: 0.5
     worlds:
         - world
 

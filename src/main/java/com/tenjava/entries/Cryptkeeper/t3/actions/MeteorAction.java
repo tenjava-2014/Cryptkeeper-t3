@@ -11,20 +11,37 @@ import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.util.Vector;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
-public class MeteorAction implements ActionHandler<Player> {
+public class MeteorAction implements ActionHandler<Player>, Listener {
 
     private final static Random RANDOM = new Random();
 
+    private final Set<FallingBlock> entities = new HashSet<>();
     private List<Material> materials;
     private List<String> worlds;
     private double chance, oreChance;
     private int minSize, maxSize;
     private Material fallback;
+
+    @EventHandler
+    public void onEntityChangeBlock(EntityChangeBlockEvent event) {
+        if (event.getEntity() instanceof FallingBlock && event.getBlock().getType().equals(Material.AIR)) {
+            entities.remove(event.getEntity());
+            if (RANDOM.nextBoolean()) {
+                event.setCancelled(true);
+            }
+        }
+    }
 
     @Override
     public void load(ConfigurationSection section) {
@@ -46,6 +63,23 @@ public class MeteorAction implements ActionHandler<Player> {
                 }
             }
         }, 5 * 20L, 30 * 20L);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Plugin.getInstance(), new Runnable() {
+
+            @Override
+            public void run() {
+                Iterator<FallingBlock> itl = entities.iterator();
+                while (itl.hasNext()) {
+                    FallingBlock block = itl.next();
+                    if (!block.isValid()) {
+                        itl.remove();
+                    } else {
+                        if (block.isOnGround()) {
+                            block.getWorld().createExplosion(block.getLocation(), 0.75F, true);
+                        }
+                    }
+                }
+            }
+        }, 20L, 20L);
     }
 
     @Override
@@ -66,7 +100,10 @@ public class MeteorAction implements ActionHandler<Player> {
                         material = materials.get(RANDOM.nextInt(materials.size()));
                     }
                     FallingBlock block = world.spawnFallingBlock(current, material, (byte) 0);
+                    block.setDropItem(false);
+                    block.setFireTicks(Integer.MAX_VALUE);
                     block.setVelocity(new Vector(0, -2, 0));
+                    entities.add(block);
                 }
             }
         }
