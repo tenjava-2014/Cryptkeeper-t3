@@ -119,7 +119,7 @@ netherEnvironment:
         - SOUL_SAND
         - GLOWSTONE
     entities:
-        - ZOMBIE_PIGMAN
+        - PIG_ZOMBIE
         - MAGMA_CUBE
     chance: 0.04
 

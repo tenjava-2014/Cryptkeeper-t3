@@ -25,7 +25,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
         Environment environment = getEnvironment();
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
-                for (int y = 0; y < 10; y++) {
+                for (int y = 64; y < 128; y++) {
                     blocks[(x * 16 + z) * 128 + y] = (byte) environment.getMaterial(y).getId();
                 }
             }
