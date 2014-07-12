@@ -45,8 +45,10 @@ public class Plugin extends JavaPlugin {
             ActionHandler handler = itl.next();
             if (!getConfig().getStringList("disabled").contains(handler.getSectionName())) {
                 handler.load(getConfig().getConfigurationSection(handler.getSectionName()));
+                getLogger().info("Enabled: " + handler.getSectionName());
                 continue;
             }
+            getLogger().info("Disabled: " + handler.getSectionName());
             itl.remove();
         }
 

@@ -15,12 +15,14 @@ import java.util.List;
 public class Util {
 
     public static List<LivingEntity> getActiveEntities() {
+        Profiler.profile("getActive");
         List<LivingEntity> entities = new ArrayList<>();
         for (World world : Bukkit.getWorlds()) {
             if (!world.getPlayers().isEmpty()) {
                 entities.addAll(world.getLivingEntities());
             }
         }
+        Profiler.profile("getActive");
         return entities;
     }
 
