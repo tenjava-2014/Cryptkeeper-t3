@@ -48,7 +48,7 @@ public class FlippedMobAction extends EntityActionHandler<LivingEntity> implemen
             return false;
         if (entity.getVehicle() != null)
             return false;
-        return true;
+        return random.nextDouble() <= chance;
     }
 
     @Override

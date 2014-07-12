@@ -38,7 +38,7 @@ public class ShootingEntitiesAction extends EntityActionHandler<LivingEntity> {
             return false;
         if (!types.contains(target.getType()))
             return false;
-        return true;
+        return random.nextDouble() <= chance;
     }
 
     @Override

@@ -51,7 +51,7 @@ public class TeleportAction extends ActionHandler<LivingEntity> {
             return false;
         if (target instanceof Player)
             return false;
-        return true;
+        return random.nextDouble() <= chance;
     }
 
     @Override
