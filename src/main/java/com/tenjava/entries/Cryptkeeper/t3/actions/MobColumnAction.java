@@ -22,7 +22,7 @@ public class MobColumnAction extends ActionHandler<LivingEntity> implements List
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onEntitySpawn(CreatureSpawnEvent event) {
-        if (canActivate(event.getEntity(), event.getEntity().getWorld())) {
+        if (!event.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.CUSTOM) && canActivate(event.getEntity(), event.getEntity().getWorld())) {
             activate(event.getEntity(), event.getEntity().getWorld());
         }
     }
