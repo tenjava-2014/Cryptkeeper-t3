@@ -3,29 +3,29 @@ package com.tenjava.entries.Cryptkeeper.t3.actions;
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import com.tenjava.entries.Cryptkeeper.t3.api.EntityActionHandler;
 import com.tenjava.entries.Cryptkeeper.t3.util.Profiler;
-import com.tenjava.entries.Cryptkeeper.t3.util.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Bat;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class FlippedMobAction extends EntityActionHandler<LivingEntity> {
+public class FlippedMobAction extends EntityActionHandler<LivingEntity> implements Listener {
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onEntitySpawn(CreatureSpawnEvent event) {
+        if (!event.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.CUSTOM) && canActivate(event.getEntity(), event.getEntity().getWorld())) {
+            activate(event.getEntity(), event.getEntity().getWorld());
+        }
+    }
 
     @Override
     public void register() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Plugin.getInstance(), new Runnable() {
-
-            @Override
-            public void run() {
-                for (LivingEntity entity : Util.getActiveEntities(worlds)) {
-                    if (canActivate(entity, entity.getWorld())) {
-                        activate(entity, entity.getWorld());
-                    }
-                }
-            }
-        }, 100L, 100L);
+        Bukkit.getPluginManager().registerEvents(this, Plugin.getInstance());
     }
 
     @Override
