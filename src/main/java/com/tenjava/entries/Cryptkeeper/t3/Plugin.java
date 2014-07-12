@@ -27,12 +27,8 @@ public class Plugin extends JavaPlugin {
         actions.add(new ExplodingMobAction());
         actions.add(new LeapingAnimalAction());
         actions.add(new PoopingAnimalAction());
-        actions.add(new VampirePigAction());
         actions.add(new FlyingAnimalAction());
-        actions.add(new RandomAgeAction());
-        actions.add(new MeteorAction());
         actions.add(new MobColumnAction());
-        actions.add(new TeleportAction());
         actions.add(new ShootingEntitiesAction());
         actions.add(new FlippedMobAction());
 
