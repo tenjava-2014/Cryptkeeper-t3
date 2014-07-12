@@ -14,7 +14,7 @@ environments:
     - diamondEnvironment
     - woodEnvironment
     - webEnvironment
-    - goodEnvironment
+    - foodEnvironment
     - lavaEnvironment
 
 foodEnvironment:
