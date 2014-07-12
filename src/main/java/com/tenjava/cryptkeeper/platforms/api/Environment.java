@@ -34,18 +34,38 @@ public class Environment {
         }
     }
 
+    /**
+     * Returns a List of all possible Material types that make up the Environment.
+     *
+     * @return
+     */
     public List<Material> getMaterials() {
         return materials;
     }
 
+    /**
+     * Returns whether or not this is a platform on which the Player can spawn.
+     *
+     * @return
+     */
     public boolean canSpawn() {
         return section.getBoolean("canSpawn", true);
     }
 
+    /**
+     * Returns the weighted chance of this Environment spawning.
+     *
+     * @return
+     */
     public double getChance() {
         return section.getDouble("chance");
     }
 
+    /**
+     * Returns a List of all EntityTypes allowed in this environment.
+     *
+     * @return
+     */
     public List<EntityType> getEntities() {
         return entities;
     }
