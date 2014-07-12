@@ -37,7 +37,7 @@ Usage
 Description
 -----
 
-Platforms is a play off planetoids, the idea of self-contained areas which contain different materials. Each is fully customizable via the config.yml - including chance, materials, and the type of mobs that spawn there. Due to the heights, small platforms, and constant mob attacks that change per platform - survival is an extreme experience.
+Platforms is a play off planetoids, the idea of self-contained areas which contain different materials. Each is fully customizable via the config.yml - including chance and the materials. Due to the heights, small platforms, and constant mob attacks - survival is an extreme experience.
 
 <!-- Hi, Cryptkeeper! This is the default README for every ten.java submission. -->
 <!-- We encourage you to edit this README with some information about your submission – keep in mind you'll be scored on documentation! -->

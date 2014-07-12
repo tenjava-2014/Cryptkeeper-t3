@@ -25,6 +25,9 @@ public class EntityPopulator extends BlockPopulator {
 
     @Override
     public void populate(World world, Random random, Chunk chunk) {
+        if (random.nextInt(75) > 0) {
+            return;
+        }
         int amount = 1 + random.nextInt(3);
         for (int i = 0; i < amount; i++) {
             int x = random.nextInt(16);
