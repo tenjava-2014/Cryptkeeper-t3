@@ -20,9 +20,15 @@ public class MobColumnAction extends ActionHandler<LivingEntity> implements List
     private List<EntityType> types;
     private int maxSize, minSize;
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntitySpawn(CreatureSpawnEvent event) {
+        if (event.isCancelled()) {
+            System.out.println("Cancelled");
+            return;
+        }
+        System.out.println("Spawn");
         if (canActivate(event.getEntity(), event.getEntity().getWorld())) {
+            System.out.println("Activate");
             activate(event.getEntity(), event.getEntity().getWorld());
         }
     }

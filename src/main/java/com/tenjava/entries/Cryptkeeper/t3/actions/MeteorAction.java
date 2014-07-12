@@ -66,6 +66,7 @@ public class MeteorAction extends ActionHandler<Player> implements Listener {
                 while (itl.hasNext()) {
                     FallingBlock block = itl.next();
                     if (block.isDead()) {
+                        System.out.println("Removing dead block");
                         itl.remove();
                     } else {
                         if (block.isOnGround()) {
