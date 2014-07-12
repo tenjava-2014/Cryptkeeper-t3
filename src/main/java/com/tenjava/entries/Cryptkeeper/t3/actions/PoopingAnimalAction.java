@@ -52,7 +52,8 @@ public class PoopingAnimalAction implements ActionHandler<LivingEntity> {
     @Override
     public String toString() {
         return "PoopingAnimalAction{" +
-                "types=" + types +
+                "worlds=" + worlds +
+                ", types=" + types +
                 ", chance=" + chance +
                 '}';
     }

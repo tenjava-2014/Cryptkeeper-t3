@@ -59,7 +59,8 @@ public class ExplodingChickenAction implements ActionHandler<LivingEntity>, Runn
     @Override
     public String toString() {
         return "ExplodingChickenAction{" +
-                "chance=" + chance +
+                "worlds=" + worlds +
+                ", chance=" + chance +
                 '}';
     }
 }

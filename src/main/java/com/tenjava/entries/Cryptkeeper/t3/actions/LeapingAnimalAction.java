@@ -50,7 +50,8 @@ public class LeapingAnimalAction implements ActionHandler<LivingEntity> {
     @Override
     public String toString() {
         return "LeapingAnimalAction{" +
-                "types=" + types +
+                "worlds=" + worlds +
+                ", types=" + types +
                 ", chance=" + chance +
                 '}';
     }

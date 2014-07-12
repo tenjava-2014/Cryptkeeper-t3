@@ -1,5 +1,5 @@
 leaping_animal:
-    chance: 0.05
+    chance: 0.35
     worlds:
         - world
     entities:
@@ -7,7 +7,7 @@ leaping_animal:
         - CREEPER
 
 pooping_animal:
-    chance: 0.1
+    chance: 0.4
     worlds:
         - world
     entities:
@@ -27,7 +27,7 @@ vampire_pig:
         - world
 
 flying_animal:
-    chance: 0.01
+    chance: 0.3
     entities:
         - COW
         - PIG
@@ -39,7 +39,21 @@ flying_animal:
         - world
 
 random_age:
-    chance: 0.1
+    chance: 0.15
+    worlds:
+        - world
+
+meteor:
+    chance: 1
+    ore_chance: 0.2
+    ores:
+        - DIAMOND_ORE
+        - GOLD_ORE
+        - IRON_ORE
+        - REDSTONE_ORE
+    default: OBSIDIAN
+    min_size: 3
+    max_size: 6
     worlds:
         - world
 

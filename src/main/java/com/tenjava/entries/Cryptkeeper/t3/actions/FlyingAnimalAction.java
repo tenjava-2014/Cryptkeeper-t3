@@ -67,7 +67,9 @@ public class FlyingAnimalAction implements ActionHandler<LivingEntity>, Runnable
     @Override
     public String toString() {
         return "FlyingAnimalAction{" +
-                "chance=" + chance +
+                "worlds=" + worlds +
+                ", types=" + types +
+                ", chance=" + chance +
                 '}';
     }
 }

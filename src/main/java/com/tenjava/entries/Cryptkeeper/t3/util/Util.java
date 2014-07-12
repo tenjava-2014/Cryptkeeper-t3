@@ -1,6 +1,7 @@
 package com.tenjava.entries.Cryptkeeper.t3.util;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -17,6 +18,18 @@ public class Util {
         if (entity == null)
             entity = fallback;
         return entity;
+    }
+
+    public static List<Material> getSafeMaterials(List<String> list) {
+        List<Material> safe = new ArrayList<>();
+        for (String item : list) {
+            try {
+                safe.add(Material.valueOf(item));
+            } catch (IllegalArgumentException exception) {
+                Plugin.getInstance().getLogger().warning("Invalid entry " + item + " for Material");
+            }
+        }
+        return safe;
     }
 
     public static List<EntityType> getSafeEntities(List<String> list) {

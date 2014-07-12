@@ -45,7 +45,8 @@ public class VampirePigAction implements ActionHandler<LivingEntity> {
     @Override
     public String toString() {
         return "VampirePigAction{" +
-                "chance=" + chance +
+                "worlds=" + worlds +
+                ", chance=" + chance +
                 '}';
     }
 }

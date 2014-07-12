@@ -3,6 +3,7 @@ package com.tenjava.entries.Cryptkeeper.t3;
 import com.tenjava.entries.Cryptkeeper.t3.actions.ExplodingChickenAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.FlyingAnimalAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.LeapingAnimalAction;
+import com.tenjava.entries.Cryptkeeper.t3.actions.MeteorAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.PoopingAnimalAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.RandomAgeAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.VampirePigAction;
@@ -28,6 +29,7 @@ public class Plugin extends JavaPlugin {
         addHandler(new VampirePigAction());
         addHandler(new FlyingAnimalAction());
         addHandler(new RandomAgeAction());
+        addHandler(new MeteorAction());
 
         for (ActionHandler handler : actions) {
             if (!getConfig().getStringList("disabled").contains(handler.getSectionName()))
