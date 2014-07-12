@@ -9,6 +9,6 @@ public class LiquidListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onBlockFromTo(BlockFromToEvent event) {
-        event.setCancelled(true);
+        //event.setCancelled(true);
     }
 }

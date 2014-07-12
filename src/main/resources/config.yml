@@ -14,6 +14,7 @@ environments:
     - diamondEnvironment
     - woodEnvironment
     - webEnvironment
+    - lavaEnvironment
 
 webEnvironment:
     materials:
@@ -102,7 +103,7 @@ iceEnvironment:
 
 waterEnvironment:
     materials:
-        - WATER
+        - STATIONARY_WATER
         - CLAY
     chance: 0.005
 
@@ -121,6 +122,12 @@ netherEnvironment:
         - PIG_ZOMBIE
         - MAGMA_CUBE
     chance: 0.04
+
+lavaEnvironment:
+    materials:
+        - LAVA_STATIONARY
+        - OBSIDIAN
+    chance: 0.03
 
 airEnvironment:
     materials:
