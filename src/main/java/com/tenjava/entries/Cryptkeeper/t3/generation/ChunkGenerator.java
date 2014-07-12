@@ -1,31 +1,23 @@
 package com.tenjava.entries.Cryptkeeper.t3.generation;
 
 import com.tenjava.entries.Cryptkeeper.t3.api.Environment;
-import com.tenjava.entries.Cryptkeeper.t3.environments.ClayEnvironment;
-import com.tenjava.entries.Cryptkeeper.t3.environments.DirtEnvironment;
-import com.tenjava.entries.Cryptkeeper.t3.environments.IceEnvironment;
-import com.tenjava.entries.Cryptkeeper.t3.environments.ObsidianEnvironment;
-import com.tenjava.entries.Cryptkeeper.t3.environments.PumpkinEnvironment;
 import com.tenjava.entries.Cryptkeeper.t3.generation.populators.CakePopulator;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 
     private final Random random = new Random();
-    private final List<Environment> environments = Arrays.asList(
-            new DirtEnvironment(),
-            new ObsidianEnvironment(),
-            new ClayEnvironment(),
-            new IceEnvironment(),
-            new PumpkinEnvironment()
-    );
+    private final List<Environment> environments = new ArrayList<>();
+
+    public void addEnvironment(Environment environment) {
+        environments.add(environment);
+    }
 
     @Override
     public byte[] generate(World world, Random random, int cx, int cz) {
@@ -51,6 +43,10 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
     @Override
     public Location getFixedSpawnLocation(World world, Random random) {
         return new Location(world, 0, 3, 0);
+    }
+
+    public List<Environment> getEnvironments() {
+        return environments;
     }
 
     private Environment getEnvironment() {

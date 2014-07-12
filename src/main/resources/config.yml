@@ -1,123 +1,38 @@
-leaping_animal:
-    chance: 0.35
-    worlds:
-        - world
-    entities:
-        - ZOMBIE
-        - CREEPER
-        - VILLAGER
-        - SPIDER
+environments:
+    - iceEnvironment
+    - waterEnvironment
+    - dirtEnvironment
+    - netherEnvironment
+    - airEnvironment
 
-pooping_animal:
-    chance: 0.1
-    worlds:
-        - world
-    entities:
-        - COW
-        - PIG
-        - CHICKEN
-        - CREEPER
-        - VILLAGER
+iceEnvironment:
+    materials:
+        - PACKED_ICE
+        - ICE
+        - GLASS
+    chance: 0.06
 
-exploding_chicken:
-    chance: 0.2
-    worlds:
-        - world
+waterEnvironment:
+    materials:
+        - WATER
+        - CLAY
+    chance: 0.01
 
-flying_animal:
-    chance: 0.4
-    entities:
-        - COW
-        - PIG
-        - CREEPER
-        - SKELETON
-        - SPIDER
-        - ZOMBIE
-        - VILLAGER
-    worlds:
-        - world
+dirtEnvironment:
+    materials:
+        - DIRT
+        - GRASS
+        - BEDROCK
+    chance: 0.08
 
-mob_column:
-    chance: 0.25
-    worlds:
-        - world
-    entities:
-        - COW
-        - PIG
-        - CREEPER
-        - SKELETON
-        - SPIDER
-        - ZOMBIE
-        - SQUID
-        - CHICKEN
-        - HORSE
-        - SHEEP
-        - VILLAGER
-    max_size: 10
-    min_size: 3
+netherEnvironment:
+    materials:
+        - NETHERRACK
+        - SOUL_SAND
+        - GLOWSTONE
+    chance: 0.04
 
-shooting_entities:
-    chance: 0.05
-    entities:
-        - PIG
-        - COW
-        - CHICKEN
-        - HORSE
-        - SHEEP
-        - VILLAGER
-    worlds:
-        - world
-
-flipped_mob:
-    chance: 0.4
-    entities:
-        - CREEPER
-        - SKELETON
-        - COW
-        - PIG
-        - SHEEP
-        - CHICKEN
-        - HORSE
-    worlds:
-        - world
-
-random_jockeys:
-    chance: 0.25
-    entities:
-        - PIG
-        - COW
-        - SHEEP
-        - WITCH
-        - VILLAGER
-        - CAVE_SPIDER
-        - CHICKEN
-    worlds:
-        - world
-
-mob_names:
+airEnvironment:
+    materials:
+        - AIR
     chance: 0.5
-    names:
-        - Bob
-        - Roberto
-        - Jack
-        - Joe
-        - Jill
-        - Juan
-        - Pablo
-        - Mrs.
-        - Mr.
-        - YOLO
-        - Swag
-        - Felipe
-        - John
-        - Alex
-        - Eugene
-        - Doge
-        - Jamie
-        - Albert
-        - Herobrine
-    worlds:
-        - world
-
-disabled:
-    - example_action
