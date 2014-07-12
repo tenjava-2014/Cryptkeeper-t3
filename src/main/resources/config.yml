@@ -139,3 +139,4 @@ startY: 64
 minHeight: 2
 maxHeight: 8
 yVariation: 10
+targetWorld: world
