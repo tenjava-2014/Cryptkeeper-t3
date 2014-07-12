@@ -35,7 +35,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
             for (int z = 0; z < 16; z++) {
                 for (int y = 0; y < 128; y++) {
                     Material material = Material.AIR;
-                    if (y >= targetY && y <= targetY + targetHeight) {
+                    if (y >= targetY && y <= targetY + targetHeight && random.nextBoolean()) {
                         material = environment.getMaterials().get(random.nextInt(environment.getMaterials().size()));
                     }
                     blocks[(x * 16 + z) * 128 + y] = (byte) material.getId();
