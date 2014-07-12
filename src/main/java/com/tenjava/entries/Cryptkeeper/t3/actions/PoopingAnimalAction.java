@@ -8,6 +8,7 @@ import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -32,9 +33,8 @@ public class PoopingAnimalAction extends EntityActionHandler<LivingEntity> {
     @Override
     public void activate(LivingEntity target, World world) {
         world.playSound(target.getLocation(), Sound.CHICKEN_EGG_POP, 1F, 1F);
-        for (int i = 0; i < 3 + random.nextInt(4); i++) {
-            world.dropItem(target.getLocation(), new ItemStack(Material.INK_SACK, 1, DyeColor.BROWN.getDyeData()));
-        }
+        Item item = world.dropItem(target.getLocation(), new ItemStack(Material.INK_SACK, 1, DyeColor.BROWN.getDyeData()));
+        item.setPickupDelay(Integer.MAX_VALUE);
     }
 
     @Override

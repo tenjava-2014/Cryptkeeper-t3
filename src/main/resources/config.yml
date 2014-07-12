@@ -9,7 +9,7 @@ leaping_animal:
         - SPIDER
 
 pooping_animal:
-    chance: 0.4
+    chance: 0.1
     worlds:
         - world
     entities:
@@ -93,6 +93,7 @@ random_jockeys:
         - CHICKEN
 
 mob_names:
+    chance: 0.5
     names:
         - Bob
         - Roberto
