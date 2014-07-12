@@ -29,6 +29,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
         if (environment.canSpawn() && spawnLocation == null) {
             spawnLocation = new Location(world, cx + 8.5D, targetY + targetHeight + 1, cz + 8.5D);
         }
+        System.out.println(targetHeight + " - " + targetY + " - " + minHeight + " - " + maxHeight);
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 for (int y = 0; y < 128; y++) {
