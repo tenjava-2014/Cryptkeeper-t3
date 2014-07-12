@@ -19,7 +19,7 @@ public class Util {
     public static Block getSolidBlock(Chunk chunk) {
         Block block = null;
         int passovers = 0;
-        while (block == null || !block.getType().isSolid() && passovers < 10) {
+        while ((block == null || !block.getType().isSolid()) && passovers < 10) {
             block = chunk.getWorld().getHighestBlockAt(chunk.getX() + random.nextInt(16), chunk.getZ() + random.nextInt(16));
             passovers++;
         }
