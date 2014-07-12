@@ -29,6 +29,10 @@ public class Plugin extends JavaPlugin {
         return generator;
     }
 
+    public ChunkGenerator getGenerator() {
+        return generator;
+    }
+
     public World getWorld() {
         return getServer().getWorld(getConfig().getString("targetWorld"));
     }

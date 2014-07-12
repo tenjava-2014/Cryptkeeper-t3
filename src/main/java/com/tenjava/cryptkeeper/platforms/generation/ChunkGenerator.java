@@ -63,6 +63,10 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
         return environments;
     }
 
+    public Location getSpawnLocation() {
+        return spawnLocation;
+    }
+
     private Environment getEnvironment() {
         double chance = 1;
         while (chance > 0) {

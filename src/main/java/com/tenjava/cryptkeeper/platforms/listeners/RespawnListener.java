@@ -11,7 +11,7 @@ public class RespawnListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerRespawn(PlayerRespawnEvent event) {
         if (event.getPlayer().getWorld().getName().equals(Plugin.getInstance().getWorld().getName())) {
-            event.setRespawnLocation(event.getPlayer().getWorld().getSpawnLocation());
+            event.setRespawnLocation(Plugin.getInstance().getGenerator().getSpawnLocation());
         }
     }
 }

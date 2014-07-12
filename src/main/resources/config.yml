@@ -14,7 +14,14 @@ environments:
     - diamondEnvironment
     - woodEnvironment
     - webEnvironment
+    - goodEnvironment
     - lavaEnvironment
+
+foodEnvironment:
+    materials:
+        - PUMPKIN
+        - MELON_BLOCK
+    chance: 0.015
 
 webEnvironment:
     materials:
@@ -110,6 +117,7 @@ waterEnvironment:
 dirtEnvironment:
     materials:
         - DIRT
+        - SOIL
         - GRASS
     chance: 0.08
 
