@@ -2,6 +2,7 @@ package com.tenjava.cryptkeeper.platforms;
 
 import com.tenjava.cryptkeeper.platforms.api.Environment;
 import com.tenjava.cryptkeeper.platforms.generation.ChunkGenerator;
+import com.tenjava.cryptkeeper.platforms.listeners.SpawnListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -19,6 +20,7 @@ public class Plugin extends JavaPlugin {
             generator.getEnvironments().add(new Environment(getConfig().getConfigurationSection(sectionName)));
         }
         getLogger().info("Loaded " + generator.getEnvironments().size() + " environments!");
+        getServer().getPluginManager().registerEvents(new SpawnListener(), this);
         Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 
             @Override
