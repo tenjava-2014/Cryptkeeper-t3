@@ -23,6 +23,7 @@ public class Plugin extends JavaPlugin {
 
     private static Plugin instance;
     private final Set<ActionHandler> actions = new HashSet<>();
+    private final ChunkGenerator generator = new ChunkGenerator();
 
     @Override
     public void onLoad() {
@@ -67,6 +68,11 @@ public class Plugin extends JavaPlugin {
     public void onDisable() {
         HandlerList.unregisterAll(this);
         getServer().getScheduler().cancelTasks(this);
+    }
+
+    @Override
+    public org.bukkit.generator.ChunkGenerator getDefaultWorldGenerator(String worldName, String id) {
+        return generator;
     }
 
     public static Plugin getInstance() {
