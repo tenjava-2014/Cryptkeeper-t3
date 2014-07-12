@@ -5,14 +5,9 @@ import org.bukkit.World;
 
 public class TimeControl implements Runnable {
 
-    private final World world;
-
-    public TimeControl() {
-        world = Plugin.getInstance().getWorld();
-    }
-
     @Override
     public void run() {
+        World world = Plugin.getInstance().getWorld();
         world.setTime(world.getTime() + 2L);
     }
 }
