@@ -27,40 +27,23 @@ webEnvironment:
     materials:
         - WEB
         - WOOL
-    entities:
-        - SPIDER
-        - CAVE_SPIDER
     chance: 0.03
 
 diamondEnvironment:
     materials:
         - STONE
         - DIAMOND_ORE
-    entities:
-        - CREEPER
-        - ZOMBIE
-        - SKELETON
-        - CAVE_SPIDER
-        - SPIDER
-        - SILVERFISH
     chance: 0.005
 
 sandEnvironment:
     materials:
         - SANDSTONE
-    entities:
-        - WITCH
-        - CREEPER
     chance: 0.05
 
 ironEnvironment:
     materials:
         - STONE
         - IRON_ORE
-    entities:
-        - ZOMBIE
-        - SKELETON
-        - SPIDER
     chance: 0.004
 
 goldEnvironment:
@@ -73,8 +56,6 @@ redstoneEnvironment:
     materials:
         - STONE
         - REDSTONE_ORE
-    entities:
-        - CAVE_SPIDER
     chance: 0.01
 
 coalEnvironment:
@@ -87,21 +68,12 @@ mossyEnvironment:
     materials:
         - MOSSY_COBBLESTONE
         - COBBLESTONE
-    entities:
-        - SILVERFISH
-        - ZOMBIE
-        - SKELETON
-        - CAVE_SPIDER
     chance: 0.02
 
 woodEnvironment:
     materials:
         - LOG
         - WOOD
-    entities:
-        - SPIDER
-        - CAVE_SPIDER
-        - SILVERFISH
     chance: 0.005
 
 iceEnvironment:
@@ -122,10 +94,6 @@ dirtEnvironment:
         - DIRT
         - SOIL
         - GRASS
-    entities:
-        - COW
-        - PIG
-        - CHICKEN
     chance: 0.08
 
 netherEnvironment:
@@ -133,9 +101,6 @@ netherEnvironment:
         - NETHERRACK
         - SOUL_SAND
         - GLOWSTONE
-    entities:
-        - PIG_ZOMBIE
-        - MAGMA_CUBE
     chance: 0.04
 
 lavaEnvironment:
@@ -147,7 +112,7 @@ lavaEnvironment:
 airEnvironment:
     materials:
         - AIR
-    chance: 0.1
+    chance: 0.25
 
 startY: 64
 minHeight: 2

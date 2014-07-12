@@ -2,13 +2,11 @@ package com.tenjava.cryptkeeper.platforms.generation;
 
 import com.tenjava.cryptkeeper.platforms.Plugin;
 import com.tenjava.cryptkeeper.platforms.api.Environment;
-import com.tenjava.cryptkeeper.platforms.generation.populators.FlowerPopulator;
+import com.tenjava.cryptkeeper.platforms.generation.populators.EntityPopulator;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.entity.EntityType;
 import org.bukkit.generator.BlockPopulator;
 
 import java.util.ArrayList;
@@ -50,27 +48,13 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
                 }
             }
         }
-
-        int passovers = random.nextInt(2) + 1;
-        for (int i = 0; i < passovers; i++) {
-            for (EntityType type : environment.getEntities()) {
-                int x = random.nextInt(16);
-                int z = random.nextInt(16);
-                Block highest = world.getHighestBlockAt(cx + x, cz + z);
-
-                //if (highest.getType().isSolid()) {
-                    world.spawnEntity(highest.getLocation().add(0, 2, 0), type);
-                //}
-            }
-        }
-
         return blocks;
     }
 
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
         List<BlockPopulator> blockPopulators = new ArrayList<>();
-        blockPopulators.add(new FlowerPopulator());
+        blockPopulators.add(new EntityPopulator());
         return blockPopulators;
     }
 
