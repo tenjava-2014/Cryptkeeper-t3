@@ -128,6 +128,6 @@ airEnvironment:
     chance: 0
     canSpawn: false
 
-sectionHeight: 6
+sectionHeight: 2
 startY: 48
-heightVariation: 4
+heightVariation: 24

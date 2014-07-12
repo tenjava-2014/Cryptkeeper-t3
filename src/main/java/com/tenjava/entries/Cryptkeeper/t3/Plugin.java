@@ -2,9 +2,8 @@ package com.tenjava.entries.Cryptkeeper.t3;
 
 import com.tenjava.entries.Cryptkeeper.t3.api.Environment;
 import com.tenjava.entries.Cryptkeeper.t3.generation.ChunkGenerator;
+import com.tenjava.entries.Cryptkeeper.t3.listeners.LiquidListener;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.List;
 
 public class Plugin extends JavaPlugin {
 
@@ -14,13 +13,11 @@ public class Plugin extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        List<String> environments = getConfig().getStringList("environments");
-        for (String sectionName : environments) {
-            Environment environment = new Environment(getConfig().getConfigurationSection(sectionName));
-            generator.getEnvironments().add(environment);
-            getLogger().info("Loaded: " + environment.toString());
+        for (String sectionName : getConfig().getStringList("environments")) {
+            generator.getEnvironments().add(new Environment(getConfig().getConfigurationSection(sectionName)));
         }
         getLogger().info("Loaded " + generator.getEnvironments().size() + " environments!");
+        getServer().getPluginManager().registerEvents(new LiquidListener(), this);
     }
 
     @Override
