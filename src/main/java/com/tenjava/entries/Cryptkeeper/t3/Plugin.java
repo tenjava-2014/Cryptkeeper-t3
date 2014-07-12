@@ -9,6 +9,9 @@ import com.tenjava.entries.Cryptkeeper.t3.actions.MobNameAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.PoopingAnimalAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.ShootingEntitiesAction;
 import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
+import com.tenjava.entries.Cryptkeeper.t3.generation.ChunkGenerator;
+import org.bukkit.World;
+import org.bukkit.WorldCreator;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,6 +23,15 @@ public class Plugin extends JavaPlugin {
 
     private static Plugin instance;
     private final Set<ActionHandler> actions = new HashSet<>();
+
+    @Override
+    public void onLoad() {
+        new WorldCreator("world")
+            .generator(new ChunkGenerator())
+            .environment(World.Environment.THE_END)
+            .generateStructures(false)
+            .createWorld();
+    }
 
     @Override
     public void onEnable() {

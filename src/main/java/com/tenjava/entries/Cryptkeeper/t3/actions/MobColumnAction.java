@@ -5,6 +5,7 @@ import com.tenjava.entries.Cryptkeeper.t3.api.EntityActionHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -39,7 +40,8 @@ public class MobColumnAction extends EntityActionHandler<LivingEntity> implement
         int size = random.nextInt(maxSize - minSize) + minSize;
         LivingEntity last = target;
         for (int i = 0; i < size; i++) {
-            LivingEntity other = (LivingEntity) world.spawnEntity(target.getLocation(), target.getType());
+            EntityType type = random.nextBoolean() ? target.getType() : types.get(random.nextInt(types.size()));
+            LivingEntity other = (LivingEntity) world.spawnEntity(target.getLocation(), type);
             last.setPassenger(other);
             last = other;
         }
