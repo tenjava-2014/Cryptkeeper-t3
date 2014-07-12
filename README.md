@@ -30,8 +30,14 @@ Usage
 
 1. Install plugin (duh.)
 2. Configure world generator using bukkit.yml.
-3. Profit?
-4. Doge.
+3. Set server to hardcore.
+4. Profit?
+5. Doge.
+
+Description
+-----
+
+Platforms is a play off planetoids, the idea of self-contained areas which contain different materials. Each is fully customizable via the config.yml - including chance, materials, and the type of mobs that spawn there. Due to the heights, small platforms, and constant mob attacks that change per platform - survival is an extreme experience.
 
 <!-- Hi, Cryptkeeper! This is the default README for every ten.java submission. -->
 <!-- We encourage you to edit this README with some information about your submission – keep in mind you'll be scored on documentation! -->

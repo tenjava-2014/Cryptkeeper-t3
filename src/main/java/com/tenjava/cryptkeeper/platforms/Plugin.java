@@ -29,6 +29,8 @@ public class Plugin extends JavaPlugin {
                 getWorld().setSpawnLocation(spawn.getBlockX(), spawn.getBlockY(), spawn.getBlockX());
                 getWorld().setKeepSpawnInMemory(true);
                 getWorld().setSpawnFlags(false, false);
+                getWorld().setGameRuleValue("doDaylightCycle", "false");
+                getWorld().setTime(14200L);
             }
         });
     }
