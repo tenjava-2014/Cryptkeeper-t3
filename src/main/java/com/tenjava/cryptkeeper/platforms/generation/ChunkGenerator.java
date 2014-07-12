@@ -43,16 +43,11 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
                 for (int z = 0; z < 16; z++) {
                     Location center = new Location(world, 8, y, 8);
                     Location current = new Location(world, x, y, z);
-                    Material material = Material.AIR;
-
                     if (y >= targetY && y <= targetY + targetHeight && random.nextBoolean()) {
-                        material = environment.getMaterials().get(random.nextInt(environment.getMaterials().size()));
+                        if (current.distanceSquared(center) <= Math.pow(5 + random.nextInt(4), 2)) {
+                            blocks[(x * 16 + z) * 128 + y] = (byte) environment.getMaterials().get(random.nextInt(environment.getMaterials().size())).getId();
+                        }
                     }
-                    if (!material.equals(Material.AIR) && current.distanceSquared(center) > Math.pow(5 + random.nextInt(4), 2)) {
-                        material = Material.AIR;
-                    }
-
-                    blocks[(x * 16 + z) * 128 + y] = (byte) material.getId();
                 }
             }
         }
