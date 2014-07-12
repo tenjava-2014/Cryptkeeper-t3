@@ -60,12 +60,15 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 
     private Environment getEnvironment() {
         double chance = 1;
+        int ticks = 0;
         while (chance > 0) {
             Environment current = environments.get(random.nextInt(environments.size()));
             chance -= current.getChance();
             if (chance <= 0) {
                 return current;
             }
+            ticks++;
+            System.out.println(ticks);
         }
         return null;
     }
