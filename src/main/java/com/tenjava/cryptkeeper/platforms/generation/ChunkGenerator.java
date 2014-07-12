@@ -2,7 +2,6 @@ package com.tenjava.cryptkeeper.platforms.generation;
 
 import com.tenjava.cryptkeeper.platforms.Plugin;
 import com.tenjava.cryptkeeper.platforms.api.Environment;
-import com.tenjava.cryptkeeper.platforms.generation.populators.HolePopulator;
 import com.tenjava.cryptkeeper.platforms.generation.populators.PyramidPopulator;
 import com.tenjava.cryptkeeper.platforms.generation.populators.TentPopulator;
 import org.bukkit.Location;
@@ -55,7 +54,6 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
         List<BlockPopulator> list = new ArrayList<>();
         list.add(new TentPopulator());
         list.add(new PyramidPopulator());
-        list.add(new HolePopulator());
         return list;
     }
 
