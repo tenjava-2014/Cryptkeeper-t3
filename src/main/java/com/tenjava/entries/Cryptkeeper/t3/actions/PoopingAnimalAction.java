@@ -15,7 +15,6 @@ public class PoopingAnimalAction extends EntityActionHandler<LivingEntity> {
 
     @Override
     public void activate(LivingEntity target, World world) {
-        System.out.println("Activating: " + getClass().getSimpleName());
         String name = Util.getName(target);
     }
 

@@ -23,12 +23,11 @@ public class ShootingEntitiesAction extends EntityActionHandler<LivingEntity> {
                     }
                 }
             }
-        }, 20L, 20L);
+        }, 40L, 40L);
     }
 
     @Override
     public void activate(LivingEntity target, World world) {
-        System.out.println("Activating: " + getClass().getSimpleName());
         target.launchProjectile(random.nextBoolean() ? LargeFireball.class : SmallFireball.class);
     }
 

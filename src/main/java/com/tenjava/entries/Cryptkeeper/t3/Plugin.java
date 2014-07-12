@@ -1,16 +1,12 @@
 package com.tenjava.entries.Cryptkeeper.t3;
 
-import com.tenjava.entries.Cryptkeeper.t3.actions.ExplodingChickenAction;
+import com.tenjava.entries.Cryptkeeper.t3.actions.ExplodingMobAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.FlippedMobAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.FlyingAnimalAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.LeapingAnimalAction;
-import com.tenjava.entries.Cryptkeeper.t3.actions.MeteorAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.MobColumnAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.PoopingAnimalAction;
-import com.tenjava.entries.Cryptkeeper.t3.actions.RandomAgeAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.ShootingEntitiesAction;
-import com.tenjava.entries.Cryptkeeper.t3.actions.TeleportAction;
-import com.tenjava.entries.Cryptkeeper.t3.actions.VampirePigAction;
 import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,7 +24,7 @@ public class Plugin extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        actions.add(new ExplodingChickenAction());
+        actions.add(new ExplodingMobAction());
         actions.add(new LeapingAnimalAction());
         actions.add(new PoopingAnimalAction());
         actions.add(new VampirePigAction());

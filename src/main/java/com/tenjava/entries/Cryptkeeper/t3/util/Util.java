@@ -3,7 +3,6 @@ package com.tenjava.entries.Cryptkeeper.t3.util;
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -16,7 +15,6 @@ import java.util.List;
 public class Util {
 
     public static List<LivingEntity> getActiveEntities(List<String> allowed) {
-        Profiler.profile("getActive");
         List<LivingEntity> entities = new ArrayList<>();
         for (World world : Bukkit.getWorlds()) {
             if (!allowed.contains(world.getName()))
@@ -31,7 +29,6 @@ public class Util {
                 }
             }
         }
-        Profiler.profile("getActive");
         return entities;
     }
 
@@ -41,18 +38,6 @@ public class Util {
         if (entity == null)
             entity = fallback;
         return entity;
-    }
-
-    public static List<Material> getSafeMaterials(List<String> list) {
-        List<Material> safe = new ArrayList<>();
-        for (String item : list) {
-            try {
-                safe.add(Material.valueOf(item));
-            } catch (IllegalArgumentException exception) {
-                Plugin.getInstance().getLogger().warning("Invalid entry " + item + " for Material");
-            }
-        }
-        return safe;
     }
 
     public static List<EntityType> getSafeEntities(List<String> list) {

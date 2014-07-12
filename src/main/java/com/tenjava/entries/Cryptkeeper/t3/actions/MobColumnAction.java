@@ -2,7 +2,6 @@ package com.tenjava.entries.Cryptkeeper.t3.actions;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import com.tenjava.entries.Cryptkeeper.t3.api.EntityActionHandler;
-import com.tenjava.entries.Cryptkeeper.t3.util.Profiler;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
@@ -37,8 +36,6 @@ public class MobColumnAction extends EntityActionHandler<LivingEntity> implement
 
     @Override
     public void activate(LivingEntity target, World world) {
-        System.out.println("Activating: " + getClass().getSimpleName());
-        Profiler.profile("columnActivate");
         int size = random.nextInt(maxSize - minSize) + minSize;
         LivingEntity last = target;
         for (int i = 0; i < size; i++) {
@@ -46,7 +43,6 @@ public class MobColumnAction extends EntityActionHandler<LivingEntity> implement
             last.setPassenger(other);
             last = other;
         }
-        Profiler.profile("columnActivate");
     }
 
     @Override

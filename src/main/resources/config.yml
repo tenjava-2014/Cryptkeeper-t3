@@ -24,13 +24,8 @@ exploding_chicken:
     worlds:
         - world
 
-vampire_pig:
-    chance: 0.1
-    worlds:
-        - world
-
 flying_animal:
-    chance: 0.25
+    chance: 0.4
     entities:
         - COW
         - PIG
@@ -42,27 +37,8 @@ flying_animal:
     worlds:
         - world
 
-random_age:
-    chance: 0.25
-    worlds:
-        - world
-
-meteor:
-    chance: 1
-    ore_chance: 0.2
-    ores:
-        - DIAMOND_ORE
-        - GOLD_ORE
-        - IRON_ORE
-        - REDSTONE_ORE
-    default: OBSIDIAN
-    min_size: 3
-    max_size: 6
-    worlds:
-        - world
-
 mob_column:
-    chance: 0.15
+    chance: 0.25
     worlds:
         - world
     entities:
@@ -80,22 +56,8 @@ mob_column:
     max_size: 10
     min_size: 3
 
-teleport:
-    chance: 0.1
-    entities:
-        - CREEPER
-        - SKELETON
-        - SPIDER
-        - ZOMBIE
-        - SQUID
-        - ZOMBIE_PIGMAN
-        - CAVE_SPIDER
-    max_range: 5
-    worlds:
-        - world
-
 shooting_entities:
-    chance: 0.15
+    chance: 0.05
     entities:
         - PIG
         - COW
@@ -107,13 +69,10 @@ shooting_entities:
         - world
 
 flipped_mob:
-    chance: 0.2
+    chance: 0.4
     entities:
         - CREEPER
         - SKELETON
-        - ZOMBIE
-        - SPIDER
-        - CAVE_SPIDER
         - COW
         - PIG
         - SHEEP
@@ -123,7 +82,7 @@ flipped_mob:
         - world
 
 random_jockeys:
-    chance: 0.15
+    chance: 0.25
     entities:
         - PIG
         - COW
@@ -134,5 +93,4 @@ random_jockeys:
         - CHICKEN
 
 disabled:
-    - teleport
-    - shooting_entities
+    - example_action
