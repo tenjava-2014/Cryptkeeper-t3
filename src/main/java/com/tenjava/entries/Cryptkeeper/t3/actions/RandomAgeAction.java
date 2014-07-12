@@ -16,7 +16,7 @@ public class RandomAgeAction extends ActionHandler<LivingEntity> {
 
             @Override
             public void run() {
-                for (LivingEntity entity : Util.getActiveEntities()) {
+                for (LivingEntity entity : Util.getActiveEntities(worlds)) {
                     if (canActivate(entity, entity.getWorld())) {
                         activate(entity, entity.getWorld());
                     }

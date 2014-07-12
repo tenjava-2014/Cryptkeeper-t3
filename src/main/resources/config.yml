@@ -62,7 +62,7 @@ meteor:
         - world
 
 mob_column:
-    chance: 0.25
+    chance: 0.15
     worlds:
         - world
     entities:

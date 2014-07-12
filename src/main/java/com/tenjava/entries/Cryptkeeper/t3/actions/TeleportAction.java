@@ -2,6 +2,7 @@ package com.tenjava.entries.Cryptkeeper.t3.actions;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
+import com.tenjava.entries.Cryptkeeper.t3.util.Profiler;
 import com.tenjava.entries.Cryptkeeper.t3.util.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -26,7 +27,7 @@ public class TeleportAction extends ActionHandler<LivingEntity> {
 
             @Override
             public void run() {
-                for (LivingEntity entity : Util.getActiveEntities()) {
+                for (LivingEntity entity : Util.getActiveEntities(worlds)) {
                     if (canActivate(entity, entity.getWorld())) {
                         activate(entity, entity.getWorld());
                     }
@@ -37,8 +38,10 @@ public class TeleportAction extends ActionHandler<LivingEntity> {
 
     @Override
     public void activate(LivingEntity target, World world) {
+        Profiler.profile("teleportActivate");
         Location end = target.getLocation().add((random.nextBoolean() ? -1 : 1) * random.nextInt(maxRange), 0, (random.nextBoolean() ? -1 : 1) * random.nextInt(maxRange));
         target.teleport(end);
+        Profiler.profile("teleportActivate");
     }
 
     @Override

@@ -14,13 +14,14 @@ import java.util.List;
 
 public class Util {
 
-    public static List<LivingEntity> getActiveEntities() {
+    public static List<LivingEntity> getActiveEntities(List<String> allowed) {
         Profiler.profile("getActive");
         List<LivingEntity> entities = new ArrayList<>();
         for (World world : Bukkit.getWorlds()) {
-            if (!world.getPlayers().isEmpty()) {
+            if (!allowed.contains(world.getName()))
+                continue;
+            if (!world.getPlayers().isEmpty())
                 entities.addAll(world.getLivingEntities());
-            }
         }
         Profiler.profile("getActive");
         return entities;

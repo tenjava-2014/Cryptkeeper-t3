@@ -2,7 +2,6 @@ package com.tenjava.entries.Cryptkeeper.t3.actions;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
-import com.tenjava.entries.Cryptkeeper.t3.util.Profiler;
 import com.tenjava.entries.Cryptkeeper.t3.util.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -17,13 +16,11 @@ public class ExplodingChickenAction extends ActionHandler<LivingEntity> {
 
             @Override
             public void run() {
-                Profiler.profile("explodingTick");
-                for (LivingEntity entity : Util.getActiveEntities()) {
+                for (LivingEntity entity : Util.getActiveEntities(worlds)) {
                     if (canActivate(entity, entity.getWorld())) {
                         activate(entity, entity.getWorld());
                     }
                 }
-                Profiler.profile("explodingTick");
             }
         }, 40L, 40L);
     }
