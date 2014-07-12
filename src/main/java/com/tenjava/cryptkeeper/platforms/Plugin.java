@@ -3,7 +3,6 @@ package com.tenjava.cryptkeeper.platforms;
 import com.tenjava.cryptkeeper.platforms.api.Environment;
 import com.tenjava.cryptkeeper.platforms.generation.ChunkGenerator;
 import com.tenjava.cryptkeeper.platforms.listeners.RespawnListener;
-import com.tenjava.cryptkeeper.platforms.runnables.TimeControl;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,8 +22,6 @@ public class Plugin extends JavaPlugin {
         getLogger().info("Loaded " + generator.getEnvironments().size() + " environments!");
 
         getServer().getPluginManager().registerEvents(new RespawnListener(), this);
-
-        getServer().getScheduler().scheduleSyncRepeatingTask(this, new TimeControl(), 1L, 1L);
     }
 
     @Override

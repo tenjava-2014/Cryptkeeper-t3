@@ -52,7 +52,7 @@ ironEnvironment:
         - ZOMBIE
         - SKELETON
         - SPIDER
-    chance: 0.005
+    chance: 0.004
 
 goldEnvironment:
     materials:
@@ -125,7 +125,7 @@ netherEnvironment:
 
 lavaEnvironment:
     materials:
-        - STATIONARY_WATER
+        - STATIONARY_LAVA
         - OBSIDIAN
     chance: 0.03
 
