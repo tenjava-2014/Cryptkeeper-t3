@@ -33,7 +33,7 @@ public class Plugin extends JavaPlugin {
     }
 
     public World getWorld() {
-        return getServer().getWorld("targetWorld");
+        return getServer().getWorld(getConfig().getString("targetWorld"));
     }
 
     public static Plugin getInstance() {
