@@ -3,7 +3,6 @@ environments:
     - waterEnvironment
     - dirtEnvironment
     - netherEnvironment
-    - airEnvironment
     - mossyEnvironment
     - sandEnvironment
     - ironEnvironment
