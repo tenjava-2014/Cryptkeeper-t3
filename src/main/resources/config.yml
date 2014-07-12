@@ -134,4 +134,5 @@ random_jockeys:
         - CHICKEN
 
 disabled:
-    - example_action
+    - teleport
+    - shooting_entities
