@@ -37,7 +37,6 @@ diamondEnvironment:
 
 sandEnvironment:
     materials:
-        - CACTUS
         - SANDSTONE
     entities:
         - WITCH
