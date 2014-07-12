@@ -9,21 +9,15 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
 import java.util.List;
-import java.util.Random;
 
-public class PoopingAnimalAction implements ActionHandler<LivingEntity> {
+public class PoopingAnimalAction extends ActionHandler<LivingEntity> {
 
-    private final static Random RANDOM = new Random();
-
-    private List<String> worlds;
     private List<EntityType> types;
-    private double chance;
 
     @Override
     public void load(ConfigurationSection section) {
-        chance = section.getDouble("chance");
+        super.load(section);
         types = Util.getSafeEntities(section.getStringList("entities"));
-        worlds = section.getStringList("worlds");
     }
 
     @Override
@@ -33,7 +27,7 @@ public class PoopingAnimalAction implements ActionHandler<LivingEntity> {
 
     @Override
     public boolean canActivate(LivingEntity target, World world) {
-        if (!worlds.contains(world.getName()))
+        if (!super.canActivate(target, world))
             return false;
         if (!types.contains(target.getType()))
             return false;
@@ -41,7 +35,7 @@ public class PoopingAnimalAction implements ActionHandler<LivingEntity> {
             return false;
         if (target instanceof Player)
             return ((Player) target).getFoodLevel() <= 5;
-        return RANDOM.nextDouble() <= chance;
+        return random.nextDouble() <= chance;
     }
 
     @Override
@@ -52,9 +46,7 @@ public class PoopingAnimalAction implements ActionHandler<LivingEntity> {
     @Override
     public String toString() {
         return "PoopingAnimalAction{" +
-                "worlds=" + worlds +
-                ", types=" + types +
-                ", chance=" + chance +
+                "types=" + types +
                 '}';
     }
 }

@@ -13,33 +13,28 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.List;
-import java.util.Random;
 
-public class FlyingAnimalAction implements ActionHandler<LivingEntity>, Runnable {
+public class FlyingAnimalAction extends ActionHandler<LivingEntity> {
 
-    private final static Random RANDOM = new Random();
-
-    private List<String> worlds;
     private List<EntityType> types;
-    private double chance;
-
-    @Override
-    public void run() {
-        for (World world : Bukkit.getWorlds()) {
-            for (LivingEntity entity : world.getLivingEntities()) {
-                if (canActivate(entity, world)) {
-                    activate(entity, world);
-                }
-            }
-        }
-    }
 
     @Override
     public void load(ConfigurationSection section) {
-        chance = section.getDouble("chance");
-        worlds = section.getStringList("worlds");
+        super.load(section);
         types = Util.getSafeEntities(section.getStringList("entities"));
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Plugin.getInstance(), this, 40L, 40L);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Plugin.getInstance(), new Runnable() {
+
+            @Override
+            public void run() {
+                for (World world : Bukkit.getWorlds()) {
+                    for (LivingEntity entity : world.getLivingEntities()) {
+                        if (canActivate(entity, world)) {
+                            activate(entity, world);
+                        }
+                    }
+                }
+            }
+        }, 40L, 40L);
     }
 
     @Override
@@ -52,11 +47,11 @@ public class FlyingAnimalAction implements ActionHandler<LivingEntity>, Runnable
 
     @Override
     public boolean canActivate(LivingEntity target, World world) {
+        if (!super.canActivate(target, world))
+            return false;
         if (!types.contains(target.getType()))
             return false;
-        if (!worlds.contains(world.getName()))
-            return false;
-        return RANDOM.nextDouble() <= chance;
+        return random.nextDouble() <= chance;
     }
 
     @Override
@@ -67,9 +62,7 @@ public class FlyingAnimalAction implements ActionHandler<LivingEntity>, Runnable
     @Override
     public String toString() {
         return "FlyingAnimalAction{" +
-                "worlds=" + worlds +
-                ", types=" + types +
-                ", chance=" + chance +
+                "types=" + types +
                 '}';
     }
 }

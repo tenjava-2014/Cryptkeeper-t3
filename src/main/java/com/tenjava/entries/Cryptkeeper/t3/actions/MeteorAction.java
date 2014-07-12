@@ -19,16 +19,12 @@ import org.bukkit.util.Vector;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
-public class MeteorAction implements ActionHandler<Player>, Listener {
-
-    private final static Random RANDOM = new Random();
+public class MeteorAction extends ActionHandler<Player> implements Listener {
 
     private final Set<FallingBlock> entities = new HashSet<>();
     private List<Material> materials;
-    private List<String> worlds;
     private double chance, oreChance;
     private int minSize, maxSize;
     private Material fallback;
@@ -37,7 +33,7 @@ public class MeteorAction implements ActionHandler<Player>, Listener {
     public void onEntityChangeBlock(EntityChangeBlockEvent event) {
         if (event.getEntity() instanceof FallingBlock && event.getBlock().getType().equals(Material.AIR)) {
             entities.remove(event.getEntity());
-            if (RANDOM.nextBoolean()) {
+            if (random.nextBoolean()) {
                 event.setCancelled(true);
             }
         }
@@ -45,8 +41,7 @@ public class MeteorAction implements ActionHandler<Player>, Listener {
 
     @Override
     public void load(ConfigurationSection section) {
-        chance = section.getDouble("chance");
-        worlds = section.getStringList("worlds");
+        super.load(section);
         materials = Util.getSafeMaterials(section.getStringList("ores"));
         oreChance = section.getDouble("ore_chance");
         fallback = Material.valueOf(section.getString("default"));
@@ -86,8 +81,8 @@ public class MeteorAction implements ActionHandler<Player>, Listener {
     public void activate(Player target, World world) {
         Location location = target.getLocation();
         location.setY(255);
-        location.add((RANDOM.nextBoolean() ? -1 : 1) * RANDOM.nextInt(25), 0, (RANDOM.nextBoolean() ? -1 : 1) * RANDOM.nextInt(25));
-        int size = RANDOM.nextInt(maxSize - minSize) + minSize;
+        location.add((random.nextBoolean() ? -1 : 1) * random.nextInt(25), 0, (random.nextBoolean() ? -1 : 1) * random.nextInt(25));
+        int size = random.nextInt(maxSize - minSize) + minSize;
         for (int x = -size; x < size + 1; x++) {
             for (int z = -size; z < size + 1; z++) {
                 for (int y = -size; y < size; y++) {
@@ -96,8 +91,8 @@ public class MeteorAction implements ActionHandler<Player>, Listener {
                         continue;
                     }
                     Material material = fallback;
-                    if (RANDOM.nextDouble() <= oreChance) {
-                        material = materials.get(RANDOM.nextInt(materials.size()));
+                    if (random.nextDouble() <= oreChance) {
+                        material = materials.get(random.nextInt(materials.size()));
                     }
                     FallingBlock block = world.spawnFallingBlock(current, material, (byte) 0);
                     block.setDropItem(false);
@@ -111,17 +106,30 @@ public class MeteorAction implements ActionHandler<Player>, Listener {
 
     @Override
     public boolean canActivate(Player target, World world) {
-        if (!worlds.contains(world.getName()))
+        if (!super.canActivate(target, world))
             return false;
         if (!target.isOnGround())
             return false;
         if (target.getGameMode().equals(GameMode.CREATIVE))
             return false;
-        return RANDOM.nextDouble() <= chance;
+        return random.nextDouble() <= chance;
     }
 
     @Override
     public String getSectionName() {
         return "meteor";
+    }
+
+    @Override
+    public String toString() {
+        return "MeteorAction{" +
+                "entities=" + entities +
+                ", materials=" + materials +
+                ", chance=" + chance +
+                ", oreChance=" + oreChance +
+                ", minSize=" + minSize +
+                ", maxSize=" + maxSize +
+                ", fallback=" + fallback +
+                '}';
     }
 }

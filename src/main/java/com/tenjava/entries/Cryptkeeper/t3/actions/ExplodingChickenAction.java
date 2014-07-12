@@ -8,59 +8,43 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.LivingEntity;
 
-import java.util.List;
-import java.util.Random;
-
-public class ExplodingChickenAction implements ActionHandler<LivingEntity>, Runnable {
-
-    private final static Random RANDOM = new Random();
-
-    private List<String> worlds;
-    private double chance;
-
-    @Override
-    public void run() {
-        for (World world : Bukkit.getWorlds()) {
-            for (LivingEntity entity : world.getLivingEntities()) {
-                if (canActivate(entity, world)) {
-                    activate(entity, world);
-                }
-            }
-        }
-    }
+public class ExplodingChickenAction extends ActionHandler<LivingEntity> {
 
     @Override
     public void load(ConfigurationSection section) {
-        chance = section.getDouble("chance");
-        worlds = section.getStringList("worlds");
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Plugin.getInstance(), this, 40L, 40L);
+        super.load(section);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Plugin.getInstance(), new Runnable() {
+
+            @Override
+            public void run() {
+                for (World world : Bukkit.getWorlds()) {
+                    for (LivingEntity entity : world.getLivingEntities()) {
+                        if (canActivate(entity, world)) {
+                            activate(entity, world);
+                        }
+                    }
+                }
+            }
+        }, 40L, 40L);
     }
 
     @Override
     public void activate(LivingEntity target, World world) {
         target.damage(target.getHealth());
-        target.getWorld().createExplosion(target.getLocation(), RANDOM.nextFloat() + 1F, true);
+        target.getWorld().createExplosion(target.getLocation(), random.nextFloat() + 1F, true);
     }
 
     @Override
     public boolean canActivate(LivingEntity target, World world) {
-        if (!worlds.contains(world.getName()))
+        if (!super.canActivate(target, world))
             return false;
         if (!(target instanceof Chicken))
             return false;
-        return RANDOM.nextDouble() <= chance;
+        return random.nextDouble() <= chance;
     }
 
     @Override
     public String getSectionName() {
         return "exploding_chicken";
-    }
-
-    @Override
-    public String toString() {
-        return "ExplodingChickenAction{" +
-                "worlds=" + worlds +
-                ", chance=" + chance +
-                '}';
     }
 }

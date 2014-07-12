@@ -27,7 +27,7 @@ vampire_pig:
         - world
 
 flying_animal:
-    chance: 0.3
+    chance: 0.1
     entities:
         - COW
         - PIG
@@ -56,6 +56,22 @@ meteor:
     max_size: 6
     worlds:
         - world
+
+mob_column:
+    chance: 0.25
+    entities:
+        - COW
+        - PIG
+        - CREEPER
+        - SKELETON
+        - SPIDER
+        - ZOMBIE
+        - SQUID
+        - CHICKEN
+        - HORSE
+        - SHEEP
+    max_size: 10
+    min_size: 3
 
 disabled:
     - example_action
