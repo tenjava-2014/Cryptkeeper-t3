@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 public class YChecker implements Runnable {
 
     private final int minY;
+    private final World world = Plugin.getInstance().getWorld();
 
     public YChecker() {
         minY = Plugin.getInstance().getConfig().getInt("startY");
@@ -15,7 +16,6 @@ public class YChecker implements Runnable {
 
     @Override
     public void run() {
-        World world = Plugin.getInstance().getWorld();
         for (Player player : world.getPlayers()) {
             if (!player.getGameMode().equals(GameMode.CREATIVE) && player.getLocation().getY() < minY && !player.isDead()) {
                 player.damage(player.getHealth());
