@@ -1,7 +1,9 @@
 package com.tenjava.entries.Cryptkeeper.t3.actions;
 
+import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
 import com.tenjava.entries.Cryptkeeper.t3.util.Util;
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
@@ -31,6 +33,7 @@ public class MobColumnAction extends ActionHandler<LivingEntity> implements List
         minSize = section.getInt("min_size");
         maxSize = section.getInt("max_size");
         types = Util.getSafeEntities(section.getStringList("entities"));
+        Bukkit.getPluginManager().registerEvents(this, Plugin.getInstance());
     }
 
     @Override
