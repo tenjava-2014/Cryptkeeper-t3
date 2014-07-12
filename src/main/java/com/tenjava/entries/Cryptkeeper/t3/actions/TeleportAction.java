@@ -1,16 +1,24 @@
 package com.tenjava.entries.Cryptkeeper.t3.actions;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
-import com.tenjava.entries.Cryptkeeper.t3.api.EntityActionHandler;
+import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
 import com.tenjava.entries.Cryptkeeper.t3.util.Util;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.entity.Bat;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
+import org.bukkit.entity.Player;
 
-public class FlyingAnimalAction extends EntityActionHandler<LivingEntity> {
+public class TeleportAction extends ActionHandler<LivingEntity> {
+
+    private int maxRange;
+
+    @Override
+    public void load(ConfigurationSection section) {
+        super.load(section);
+        maxRange = section.getInt("max_range");
+    }
 
     @Override
     public void register() {
@@ -24,28 +32,33 @@ public class FlyingAnimalAction extends EntityActionHandler<LivingEntity> {
                     }
                 }
             }
-        }, 40L, 40L);
+        }, 30L, 30L);
     }
 
     @Override
     public void activate(LivingEntity target, World world) {
-        Bat bat = world.spawn(target.getLocation(), Bat.class);
-        bat.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 0), true);
-        bat.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 0), true);
-        bat.setPassenger(Util.getRiding(target, target));
+        Location end = target.getLocation().add((random.nextBoolean() ? -1 : 1) * random.nextInt(maxRange), 0, (random.nextBoolean() ? -1 : 1) * random.nextInt(maxRange));
+        target.teleport(end);
     }
 
     @Override
     public boolean canActivate(LivingEntity target, World world) {
         if (!super.canActivate(target, world))
             return false;
-        if (!types.contains(target.getType()))
+        if (target instanceof Player)
             return false;
-        return random.nextDouble() <= chance;
+        return true;
     }
 
     @Override
     public String getSectionName() {
-        return "flying_animal";
+        return "teleport";
+    }
+
+    @Override
+    public String toString() {
+        return "TeleportAction{" +
+                "maxRange=" + maxRange +
+                '}';
     }
 }

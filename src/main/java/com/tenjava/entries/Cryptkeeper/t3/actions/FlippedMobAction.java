@@ -10,7 +10,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class FlyingAnimalAction extends EntityActionHandler<LivingEntity> {
+public class FlippedMobAction extends EntityActionHandler<LivingEntity> {
 
     @Override
     public void register() {
@@ -24,7 +24,7 @@ public class FlyingAnimalAction extends EntityActionHandler<LivingEntity> {
                     }
                 }
             }
-        }, 40L, 40L);
+        }, 100L, 100L);
     }
 
     @Override
@@ -32,20 +32,21 @@ public class FlyingAnimalAction extends EntityActionHandler<LivingEntity> {
         Bat bat = world.spawn(target.getLocation(), Bat.class);
         bat.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 0), true);
         bat.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 0), true);
-        bat.setPassenger(Util.getRiding(target, target));
+        target.setPassenger(bat);
+        target.setCustomName("Dinnerbone");
     }
 
     @Override
-    public boolean canActivate(LivingEntity target, World world) {
-        if (!super.canActivate(target, world))
+    public boolean canActivate(LivingEntity entity, World world) {
+        if (!super.canActivate(entity, world))
             return false;
-        if (!types.contains(target.getType()))
+        if (entity.getPassenger() != null)
             return false;
-        return random.nextDouble() <= chance;
+        return true;
     }
 
     @Override
     public String getSectionName() {
-        return "flying_animal";
+        return "flipped_mob";
     }
 }

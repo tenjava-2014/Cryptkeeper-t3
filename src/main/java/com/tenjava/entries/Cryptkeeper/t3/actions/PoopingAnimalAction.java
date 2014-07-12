@@ -1,23 +1,16 @@
 package com.tenjava.entries.Cryptkeeper.t3.actions;
 
-import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
+import com.tenjava.entries.Cryptkeeper.t3.api.EntityActionHandler;
 import com.tenjava.entries.Cryptkeeper.t3.util.Util;
 import org.bukkit.World;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
-import java.util.List;
-
-public class PoopingAnimalAction extends ActionHandler<LivingEntity> {
-
-    private List<EntityType> types;
+public class PoopingAnimalAction extends EntityActionHandler<LivingEntity> {
 
     @Override
-    public void load(ConfigurationSection section) {
-        super.load(section);
-        types = Util.getSafeEntities(section.getStringList("entities"));
+    public void register() {
+
     }
 
     @Override
@@ -41,12 +34,5 @@ public class PoopingAnimalAction extends ActionHandler<LivingEntity> {
     @Override
     public String getSectionName() {
         return "pooping_animal";
-    }
-
-    @Override
-    public String toString() {
-        return "PoopingAnimalAction{" +
-                "types=" + types +
-                '}';
     }
 }

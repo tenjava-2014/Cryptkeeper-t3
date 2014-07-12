@@ -1,7 +1,9 @@
 package com.tenjava.entries.Cryptkeeper.t3.util;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -11,6 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Util {
+
+    public static List<LivingEntity> getActiveEntities() {
+        List<LivingEntity> entities = new ArrayList<>();
+        for (World world : Bukkit.getWorlds()) {
+            if (!world.getPlayers().isEmpty()) {
+                entities.addAll(world.getLivingEntities());
+            }
+        }
+        return entities;
+    }
 
     public static Entity getRiding(Entity entity, Entity fallback) {
         while (entity.getVehicle() != null)

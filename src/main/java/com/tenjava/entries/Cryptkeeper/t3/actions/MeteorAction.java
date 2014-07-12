@@ -25,7 +25,7 @@ public class MeteorAction extends ActionHandler<Player> implements Listener {
 
     private final Set<FallingBlock> entities = new HashSet<>();
     private List<Material> materials;
-    private double chance, oreChance;
+    private double oreChance;
     private int minSize, maxSize;
     private Material fallback;
 
@@ -47,6 +47,10 @@ public class MeteorAction extends ActionHandler<Player> implements Listener {
         fallback = Material.valueOf(section.getString("default"));
         minSize = section.getInt("min_size");
         maxSize = section.getInt("max_size");
+    }
+
+    @Override
+    public void register() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(Plugin.getInstance(), new Runnable() {
 
             @Override

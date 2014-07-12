@@ -18,6 +18,8 @@ public abstract class ActionHandler<T> {
         chance = section.getDouble("chance");
     }
 
+    public abstract void register();
+
     public abstract void activate(T target, World world);
 
     public boolean canActivate(T target, World world) {

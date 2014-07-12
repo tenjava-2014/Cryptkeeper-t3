@@ -2,26 +2,23 @@ package com.tenjava.entries.Cryptkeeper.t3.actions;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
+import com.tenjava.entries.Cryptkeeper.t3.util.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.LivingEntity;
 
 public class ExplodingChickenAction extends ActionHandler<LivingEntity> {
 
     @Override
-    public void load(ConfigurationSection section) {
-        super.load(section);
+    public void register() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(Plugin.getInstance(), new Runnable() {
 
             @Override
             public void run() {
-                for (World world : Bukkit.getWorlds()) {
-                    for (LivingEntity entity : world.getLivingEntities()) {
-                        if (canActivate(entity, world)) {
-                            activate(entity, world);
-                        }
+                for (LivingEntity entity : Util.getActiveEntities()) {
+                    if (canActivate(entity, entity.getWorld())) {
+                        activate(entity, entity.getWorld());
                     }
                 }
             }

@@ -1,23 +1,18 @@
 package com.tenjava.entries.Cryptkeeper.t3.actions;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
-import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
-import com.tenjava.entries.Cryptkeeper.t3.util.Util;
+import com.tenjava.entries.Cryptkeeper.t3.api.EntityActionHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
-import java.util.List;
+public class MobColumnAction extends EntityActionHandler<LivingEntity> implements Listener {
 
-public class MobColumnAction extends ActionHandler<LivingEntity> implements Listener {
-
-    private List<EntityType> types;
     private int maxSize, minSize;
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -32,7 +27,10 @@ public class MobColumnAction extends ActionHandler<LivingEntity> implements List
         super.load(section);
         minSize = section.getInt("min_size");
         maxSize = section.getInt("max_size");
-        types = Util.getSafeEntities(section.getStringList("entities"));
+    }
+
+    @Override
+    public void register() {
         Bukkit.getPluginManager().registerEvents(this, Plugin.getInstance());
     }
 
@@ -59,5 +57,13 @@ public class MobColumnAction extends ActionHandler<LivingEntity> implements List
     @Override
     public String getSectionName() {
         return "mob_column";
+    }
+
+    @Override
+    public String toString() {
+        return "MobColumnAction{" +
+                "maxSize=" + maxSize +
+                ", minSize=" + minSize +
+                '}';
     }
 }

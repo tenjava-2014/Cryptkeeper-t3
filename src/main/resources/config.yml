@@ -5,6 +5,8 @@ leaping_animal:
     entities:
         - ZOMBIE
         - CREEPER
+        - VILLAGER
+        - SPIDER
 
 pooping_animal:
     chance: 0.4
@@ -15,6 +17,7 @@ pooping_animal:
         - PIG
         - CHICKEN
         - CREEPER
+        - VILLAGER
 
 exploding_chicken:
     chance: 0.2
@@ -35,6 +38,7 @@ flying_animal:
         - SKELETON
         - SPIDER
         - ZOMBIE
+        - VILLAGER
     worlds:
         - world
 
@@ -72,8 +76,62 @@ mob_column:
         - CHICKEN
         - HORSE
         - SHEEP
+        - VILLAGER
     max_size: 10
     min_size: 3
+
+teleport:
+    chance: 0.1
+    entities:
+        - CREEPER
+        - SKELETON
+        - SPIDER
+        - ZOMBIE
+        - SQUID
+        - ZOMBIE_PIGMAN
+        - CAVE_SPIDER
+    max_range: 5
+    worlds:
+        - world
+
+shooting_entities:
+    chance: 0.15
+    entities:
+        - PIG
+        - COW
+        - CHICKEN
+        - HORSE
+        - SHEEP
+        - VILLAGER
+    worlds:
+        - world
+
+flipped_mob:
+    chance: 0.1
+    entities:
+        - CREEPER
+        - SKELETON
+        - ZOMBIE
+        - SPIDER
+        - CAVE_SPIDER
+        - COW
+        - PIG
+        - SHEEP
+        - CHICKEN
+        - HORSE
+    worlds:
+        - world
+
+random_jockeys:
+    chance: 0.05
+    entities:
+        - PIG
+        - COW
+        - SHEEP
+        - WITCH
+        - VILLAGER
+        - CAVE_SPIDER
+        - CHICKEN
 
 disabled:
     - example_action

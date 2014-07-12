@@ -1,11 +1,12 @@
 package com.tenjava.entries.Cryptkeeper.t3.actions;
 
-import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
+import com.tenjava.entries.Cryptkeeper.t3.api.EntityActionHandler;
 import org.bukkit.World;
+import org.bukkit.entity.LargeFireball;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Pig;
+import org.bukkit.entity.SmallFireball;
 
-public class VampirePigAction extends ActionHandler<LivingEntity> {
+public class ShootingEntitiesAction extends EntityActionHandler<LivingEntity> {
 
     @Override
     public void register() {
@@ -14,21 +15,20 @@ public class VampirePigAction extends ActionHandler<LivingEntity> {
 
     @Override
     public void activate(LivingEntity target, World world) {
-        target.damage(target.getHealth());
-        target.getWorld().createExplosion(target.getLocation(), random.nextFloat() + 1F, true);
+        target.launchProjectile(random.nextBoolean() ? LargeFireball.class : SmallFireball.class);
     }
 
     @Override
     public boolean canActivate(LivingEntity target, World world) {
         if (!super.canActivate(target, world))
             return false;
-        if (!(target instanceof Pig))
+        if (!types.contains(target.getType()))
             return false;
-        return random.nextDouble() <= chance;
+        return true;
     }
 
     @Override
     public String getSectionName() {
-        return "vampire_pig";
+        return "shooting_entities";
     }
 }
