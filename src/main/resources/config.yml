@@ -135,7 +135,7 @@ airEnvironment:
     chance: 0
     canSpawn: false
 
-startY: 128
+startY: 64
 minHeight: 2
 maxHeight: 8
 yVariation: 10

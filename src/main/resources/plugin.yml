@@ -1,4 +1,4 @@
-name: WildWorld
-main: com.tenjava.entries.Cryptkeeper.t3.Plugin
+name: Platforms
+main: com.tenjava.cryptkeeper.platforms.Plugin
 version: '${project.version}'
 load: STARTUP

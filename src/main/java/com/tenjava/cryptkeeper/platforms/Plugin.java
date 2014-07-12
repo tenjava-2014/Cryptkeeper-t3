@@ -1,8 +1,8 @@
-package com.tenjava.entries.Cryptkeeper.t3;
+package com.tenjava.cryptkeeper.platforms;
 
-import com.tenjava.entries.Cryptkeeper.t3.api.Environment;
-import com.tenjava.entries.Cryptkeeper.t3.generation.ChunkGenerator;
-import com.tenjava.entries.Cryptkeeper.t3.listeners.LiquidListener;
+import com.tenjava.cryptkeeper.platforms.api.Environment;
+import com.tenjava.cryptkeeper.platforms.generation.ChunkGenerator;
+import com.tenjava.cryptkeeper.platforms.listeners.LiquidListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Plugin extends JavaPlugin {
