@@ -7,6 +7,7 @@ import com.tenjava.cryptkeeper.platforms.generation.populators.TentPopulator;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.BlockFace;
 import org.bukkit.generator.BlockPopulator;
 
 import java.util.ArrayList;
@@ -28,7 +29,8 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
         int targetY = random.nextInt(Plugin.getInstance().getConfig().getInt("yVariation")) + Plugin.getInstance().getConfig().getInt("startY");
         Environment environment = getEnvironment();
         if (environment.canSpawn() && spawnLocation == null) {
-            spawnLocation = new Location(world, cx + 1.5, targetY + targetHeight + 1, cz + 1.5D);
+            spawnLocation = new Location(world, cx + 7.5D, targetY + targetHeight + 3, cz + 7.5D);
+            spawnLocation.getBlock().getRelative(BlockFace.DOWN).setType(Material.BEDROCK);
         }
         for (int y = 0; y < 128; y++) {
             Location center = new Location(world, 8, y, 8);

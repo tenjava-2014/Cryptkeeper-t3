@@ -25,6 +25,8 @@ public class Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new RespawnListener(), this);
 
         getServer().getScheduler().scheduleSyncRepeatingTask(this, new YChecker(), 20L, 20L);
+
+        getWorld().setKeepSpawnInMemory(true);
     }
 
     @Override
