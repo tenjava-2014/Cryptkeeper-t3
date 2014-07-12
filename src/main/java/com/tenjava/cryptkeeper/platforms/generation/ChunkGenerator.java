@@ -34,9 +34,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
             world.setSpawnLocation(cx + 7, targetY + targetHeight + 3, cz + 7);
         }
         for (int y = 0; y < 128; y++) {
-            Location center = new Location(world, 8, y, 8);
             for (int x = 0; x < 16; x++) {
                 for (int z = 0; z < 16; z++) {
+                    Location center = new Location(world, 8, y, 8);
                     Location current = new Location(world, x, y, z);
                     Material material = Material.AIR;
                     if (y >= targetY && y <= targetY + targetHeight && random.nextBoolean()) {

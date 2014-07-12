@@ -41,6 +41,8 @@ diamondEnvironment:
         - ZOMBIE
         - SKELETON
         - CAVE_SPIDER
+        - SPIDER
+        - SILVERFISH
     chance: 0.005
 
 sandEnvironment:
