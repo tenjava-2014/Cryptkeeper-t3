@@ -59,6 +59,8 @@ meteor:
 
 mob_column:
     chance: 0.25
+    worlds:
+        - world
     entities:
         - COW
         - PIG
