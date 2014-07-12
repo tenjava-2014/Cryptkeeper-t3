@@ -91,6 +91,8 @@ random_jockeys:
         - VILLAGER
         - CAVE_SPIDER
         - CHICKEN
+    worlds:
+        - world
 
 mob_names:
     chance: 0.5
@@ -114,6 +116,8 @@ mob_names:
         - Jamie
         - Albert
         - Herobrine
+    worlds:
+        - world
 
 disabled:
     - example_action
