@@ -125,7 +125,7 @@ netherEnvironment:
 airEnvironment:
     materials:
         - AIR
-    chance: 0.15
+    chance: 0
     canSpawn: false
 
 sectionHeight: 6
