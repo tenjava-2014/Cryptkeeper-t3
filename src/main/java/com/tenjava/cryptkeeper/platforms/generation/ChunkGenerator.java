@@ -31,6 +31,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
         if (environment.canSpawn() && spawnLocation == null) {
             spawnLocation = new Location(world, cx + 7.5D, targetY + targetHeight + 3, cz + 7.5D);
             spawnLocation.getBlock().getRelative(BlockFace.DOWN).setType(Material.BEDROCK);
+            world.setSpawnLocation(cx + 7, targetY + targetHeight + 3, cz + 7);
         }
         for (int y = 0; y < 128; y++) {
             Location center = new Location(world, 8, y, 8);
