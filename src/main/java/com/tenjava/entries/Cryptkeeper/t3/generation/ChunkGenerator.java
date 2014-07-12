@@ -2,9 +2,12 @@ package com.tenjava.entries.Cryptkeeper.t3.generation;
 
 import com.tenjava.entries.Cryptkeeper.t3.api.Environment;
 import com.tenjava.entries.Cryptkeeper.t3.environments.ClayEnvironment;
+import com.tenjava.entries.Cryptkeeper.t3.environments.DirtEnvironment;
+import com.tenjava.entries.Cryptkeeper.t3.environments.IceEnvironment;
 import com.tenjava.entries.Cryptkeeper.t3.environments.ObsidianEnvironment;
-import com.tenjava.entries.Cryptkeeper.t3.environments.StandardEnvironment;
+import com.tenjava.entries.Cryptkeeper.t3.environments.PumpkinEnvironment;
 import com.tenjava.entries.Cryptkeeper.t3.generation.populators.CakePopulator;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
 
@@ -17,9 +20,11 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 
     private final Random random = new Random();
     private final List<Environment> environments = Arrays.asList(
-            new StandardEnvironment(),
+            new DirtEnvironment(),
             new ObsidianEnvironment(),
-            new ClayEnvironment()
+            new ClayEnvironment(),
+            new IceEnvironment(),
+            new PumpkinEnvironment()
     );
 
     @Override
@@ -41,6 +46,11 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
         List<BlockPopulator> list = new ArrayList<>();
         list.add(new CakePopulator());
         return list;
+    }
+
+    @Override
+    public Location getFixedSpawnLocation(World world, Random random) {
+        return new Location(world, 0, 3, 0);
     }
 
     private Environment getEnvironment() {

@@ -7,9 +7,8 @@ public class ClayEnvironment extends Environment {
 
     @Override
     public Material getMaterial(int y) {
-        if (y <= 3) {
+        if (y <= 3)
             return random.nextBoolean() ? Material.WATER : Material.CLAY;
-        }
         return Material.AIR;
     }
 
