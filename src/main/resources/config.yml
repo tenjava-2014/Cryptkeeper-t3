@@ -38,5 +38,10 @@ flying_animal:
     worlds:
         - world
 
+random_age:
+    chance: 0.1
+    worlds:
+        - world
+
 disabled:
     - example_action

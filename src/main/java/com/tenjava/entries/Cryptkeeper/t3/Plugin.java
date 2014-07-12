@@ -4,6 +4,7 @@ import com.tenjava.entries.Cryptkeeper.t3.actions.ExplodingChickenAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.FlyingAnimalAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.LeapingAnimalAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.PoopingAnimalAction;
+import com.tenjava.entries.Cryptkeeper.t3.actions.RandomAgeAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.VampirePigAction;
 import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
 import org.bukkit.event.HandlerList;
@@ -26,6 +27,7 @@ public class Plugin extends JavaPlugin {
         addHandler(new PoopingAnimalAction());
         addHandler(new VampirePigAction());
         addHandler(new FlyingAnimalAction());
+        addHandler(new RandomAgeAction());
 
         for (ActionHandler handler : actions) {
             if (!getConfig().getStringList("disabled").contains(handler.getSectionName()))

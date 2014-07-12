@@ -48,8 +48,7 @@ public class ExplodingChickenAction implements ActionHandler<LivingEntity>, Runn
             return false;
         if (!(target instanceof Chicken))
             return false;
-        //return RANDOM.nextDouble() <= chance;
-        return true;
+        return RANDOM.nextDouble() <= chance;
     }
 
     @Override
