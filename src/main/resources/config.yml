@@ -1,0 +1,13 @@
+leaping_animal:
+    chance: 0.05
+    entities:
+        - ZOMBIE
+        - CREEPER
+
+pooping_animal:
+    chance: 0.1
+    entities:
+        - COW
+        - PIG
+        - CHICKEN
+        - CREEPER
