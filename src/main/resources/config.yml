@@ -30,7 +30,7 @@ vampire_pig:
         - world
 
 flying_animal:
-    chance: 0.02
+    chance: 0.05
     entities:
         - COW
         - PIG
@@ -62,7 +62,7 @@ meteor:
         - world
 
 mob_column:
-    chance: 0.15
+    chance: 0.05
     worlds:
         - world
     entities:
@@ -95,7 +95,7 @@ teleport:
         - world
 
 shooting_entities:
-    chance: 0.15
+    chance: 0.25
     entities:
         - PIG
         - COW
@@ -107,7 +107,7 @@ shooting_entities:
         - world
 
 flipped_mob:
-    chance: 0.1
+    chance: 0.05
     entities:
         - CREEPER
         - SKELETON

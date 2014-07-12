@@ -15,7 +15,7 @@ public abstract class ActionHandler<T> {
 
     public void load(ConfigurationSection section) {
         worlds.addAll(section.getStringList("worlds"));
-        chance = section.getDouble("chance");
+        chance = 1 - section.getDouble("chance");
     }
 
     public abstract void register();
