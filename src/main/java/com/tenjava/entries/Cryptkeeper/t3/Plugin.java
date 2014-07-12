@@ -3,6 +3,7 @@ package com.tenjava.entries.Cryptkeeper.t3;
 import com.tenjava.entries.Cryptkeeper.t3.api.Environment;
 import com.tenjava.entries.Cryptkeeper.t3.generation.ChunkGenerator;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,6 +21,7 @@ public class Plugin extends JavaPlugin {
         List<String> environments = getConfig().getStringList("environments");
         for (String environment : environments) {
             List<Material> materials = new ArrayList<>();
+            List<EntityType> entities = new ArrayList<>();
             for (String name : getConfig().getStringList(environment + ".materials")) {
                 try {
                     materials.add(Material.valueOf(name));
@@ -27,9 +29,16 @@ public class Plugin extends JavaPlugin {
                     getLogger().warning("Unknown Material: " + name);
                 }
             }
+            for (String name : getConfig().getStringList(environment + ".entities")) {
+                try {
+                    entities.add(EntityType.valueOf(name));
+                } catch (IllegalArgumentException ex) {
+                    getLogger().warning("Unknown EntityType: " + name);
+                }
+            }
             double chance = getConfig().getDouble(environment + ".chance");
             getLogger().info("Loaded " + environment + " with " + materials.size() + " materials and a " + chance + "% chance.");
-            Environment instance = new Environment(materials, chance);
+            Environment instance = new Environment(materials, entities, chance);
             generator.addEnvironment(instance);
         }
         getLogger().info("Loaded " + generator.getEnvironments().size() + " environments!");

@@ -42,7 +42,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 
     @Override
     public Location getFixedSpawnLocation(World world, Random random) {
-        return new Location(world, 0, 3, 0);
+        return new Location(world, 0, 4, 0);
     }
 
     public List<Environment> getEnvironments() {

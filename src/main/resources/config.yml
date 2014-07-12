@@ -4,6 +4,95 @@ environments:
     - dirtEnvironment
     - netherEnvironment
     - airEnvironment
+    - mossyEnvironment
+    - sandEnvironment
+    - ironEnvironment
+    - coalEnvironment
+    - goldEnvironment
+    - diamondEnvironment
+    - redstoneEnvironment
+    - diamondEnvironment
+    - woodEnvironment
+    - webEnvironment
+
+webEnvironment:
+    materials:
+        - WEB
+        - WOOL
+    entities:
+        - SPIDER
+        - CAVE_SPIDER
+    chance: 0.03
+
+diamondEnvironment:
+    materials:
+        - STONE
+        - DIAMOND_ORE
+    entities:
+        - CREEPER
+        - ZOMBIE
+        - SKELETON
+        - CAVE_SPIDER
+    chance: 0.005
+
+sandEnvironment:
+    materials:
+        - SAND
+        - SANDSTONE
+    entities:
+        - WITCH
+        - CREEPER
+    chance: 0.05
+
+ironEnvironment:
+    materials:
+        - STONE
+        - IRON_ORE
+    entities:
+        - ZOMBIE
+        - SKELETON
+        - SPIDER
+    chance: 0.005
+
+goldEnvironment:
+    materials:
+        - STONE
+        - GOLD_ORE
+    chance: 0.0005
+
+redstoneEnvironment:
+    materials:
+        - STONE
+        - REDSTONE_ORE
+    entities:
+        - CAVE_SPIDER
+    chance: 0.01
+
+coalEnvironment:
+    materials:
+        - STONE
+        - COAL_ORE
+    chance: 0.01
+
+mossyEnvironment:
+    materials:
+        - MOSSY_COBBLESTONE
+        - COBBLESTONE
+    entities:
+        - SILVERFISH
+        - ZOMBIE
+        - SKELETON
+        - CAVE_SPIDER
+    chance: 0.02
+
+woodEnvironment:
+    materials:
+        - LOG
+        - WOOD
+    entities:
+        - SPIDER
+        - CAVE_SPIDER
+    chance: 0.005
 
 iceEnvironment:
     materials:
@@ -16,13 +105,12 @@ waterEnvironment:
     materials:
         - WATER
         - CLAY
-    chance: 0.01
+    chance: 0.005
 
 dirtEnvironment:
     materials:
         - DIRT
         - GRASS
-        - BEDROCK
     chance: 0.08
 
 netherEnvironment:
@@ -30,9 +118,12 @@ netherEnvironment:
         - NETHERRACK
         - SOUL_SAND
         - GLOWSTONE
+    entities:
+        - ZOMBIE_PIGMAN
+        - MAGMA_CUBE
     chance: 0.04
 
 airEnvironment:
     materials:
         - AIR
-    chance: 0.5
+    chance: 0.3
