@@ -21,11 +21,10 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
     @Override
     public byte[] generate(World world, Random random, int cx, int cz) {
         byte[] blocks = new byte[32768];
-        int startY = Plugin.getInstance().getConfig().getInt("startY");
         int minHeight = Plugin.getInstance().getConfig().getInt("minHeight");
         int maxHeight = Plugin.getInstance().getConfig().getInt("maxHeight");
         int targetHeight = random.nextInt(maxHeight - minHeight) + minHeight;
-        int targetY = random.nextInt(Plugin.getInstance().getConfig().getInt("yVariation")) + startY;
+        int targetY = random.nextInt(Plugin.getInstance().getConfig().getInt("yVariation")) + Plugin.getInstance().getConfig().getInt("startY");
         Environment environment = getEnvironment();
         if (environment.canSpawn() && spawnLocation == null) {
             spawnLocation = new Location(world, cx + 8.5D, targetY + targetHeight + 1, cz + 8.5D);
@@ -34,7 +33,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
             for (int z = 0; z < 16; z++) {
                 for (int y = 0; y < 128; y++) {
                     Material material = Material.AIR;
-                    if (y >= startY && y <= startY + targetHeight) {
+                    if (y >= targetY && y <= targetY + targetHeight) {
                         material = environment.getMaterials().get(random.nextInt(environment.getMaterials().size()));
                     }
                     blocks[(x * 16 + z) * 128 + y] = (byte) material.getId();
