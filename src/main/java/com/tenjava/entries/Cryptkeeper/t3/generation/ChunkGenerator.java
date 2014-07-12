@@ -1,8 +1,10 @@
 package com.tenjava.entries.Cryptkeeper.t3.generation;
 
+import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import com.tenjava.entries.Cryptkeeper.t3.api.Environment;
 import com.tenjava.entries.Cryptkeeper.t3.generation.populators.CakePopulator;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
 
@@ -14,19 +16,26 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 
     private final Random random = new Random();
     private final List<Environment> environments = new ArrayList<>();
-
-    public void addEnvironment(Environment environment) {
-        environments.add(environment);
-    }
+    private Location spawnLocation;
 
     @Override
     public byte[] generate(World world, Random random, int cx, int cz) {
         byte[] blocks = new byte[32768];
+        int startY = Plugin.getInstance().getConfig().getInt("startY");
+        int sectionHeight = Plugin.getInstance().getConfig().getInt("sectionHeight");
+        sectionHeight += random.nextInt(Plugin.getInstance().getConfig().getInt("heightVariation"));
         Environment environment = getEnvironment();
+        if (environment.canSpawn() && spawnLocation == null) {
+            spawnLocation = new Location(world, cx + 8.5D, startY + sectionHeight + 1, cz + 8.5D);
+        }
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 for (int y = 0; y < 128; y++) {
-                    blocks[(x * 16 + z) * 128 + y] = (byte) environment.getMaterial(y).getId();
+                    Material material = Material.AIR;
+                    if (y >= startY && y <= startY + sectionHeight) {
+                        material = environment.getMaterial();
+                    }
+                    blocks[(x * 16 + z) * 128 + y] = (byte) material.getId();
                 }
             }
         }
@@ -42,7 +51,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 
     @Override
     public Location getFixedSpawnLocation(World world, Random random) {
-        return new Location(world, 0, 4, 0);
+        return spawnLocation;
     }
 
     public List<Environment> getEnvironments() {

@@ -127,3 +127,8 @@ airEnvironment:
     materials:
         - AIR
     chance: 0.3
+    canSpawn: false
+
+sectionHeight: 24
+startY: 48
+heightVariation: 25
