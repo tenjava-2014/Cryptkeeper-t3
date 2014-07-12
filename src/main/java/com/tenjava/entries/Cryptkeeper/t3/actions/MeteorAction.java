@@ -74,7 +74,7 @@ public class MeteorAction implements ActionHandler<Player> {
 
     @Override
     public boolean canActivate(Player target, World world) {
-        if (!worlds.contains(target.getName()))
+        if (!worlds.contains(world.getName()))
             return false;
         if (!target.isOnGround())
             return false;
