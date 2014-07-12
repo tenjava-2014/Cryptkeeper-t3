@@ -30,6 +30,7 @@ public class FlippedMobAction extends EntityActionHandler<LivingEntity> implemen
 
     @Override
     public void activate(LivingEntity target, World world) {
+        System.out.println("Activating: " + getClass().getSimpleName());
         Profiler.profile("flippedActivate");
         Bat bat = world.spawn(target.getLocation(), Bat.class);
         bat.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 0), true);

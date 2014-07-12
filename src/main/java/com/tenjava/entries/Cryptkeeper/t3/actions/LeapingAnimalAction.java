@@ -14,6 +14,7 @@ public class LeapingAnimalAction extends EntityActionHandler<LivingEntity> {
 
     @Override
     public void activate(LivingEntity target, World world) {
+        System.out.println("Activating: " + getClass().getSimpleName());
         target.setVelocity(new Vector(0, 1, 0));
     }
 

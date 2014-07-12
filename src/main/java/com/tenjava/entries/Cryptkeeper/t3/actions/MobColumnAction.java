@@ -37,6 +37,7 @@ public class MobColumnAction extends EntityActionHandler<LivingEntity> implement
 
     @Override
     public void activate(LivingEntity target, World world) {
+        System.out.println("Activating: " + getClass().getSimpleName());
         Profiler.profile("columnActivate");
         int size = random.nextInt(maxSize - minSize) + minSize;
         LivingEntity last = target;

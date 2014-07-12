@@ -27,6 +27,7 @@ public class RandomAgeAction extends ActionHandler<LivingEntity> {
 
     @Override
     public void activate(LivingEntity target, World world) {
+        System.out.println("Activating: " + getClass().getSimpleName());
         Ageable ageable = (Ageable) target;
         if (!ageable.isAdult()) {
             ageable.setAdult();

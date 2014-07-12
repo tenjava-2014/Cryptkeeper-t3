@@ -31,6 +31,7 @@ public class FlyingAnimalAction extends EntityActionHandler<LivingEntity> implem
 
     @Override
     public void activate(LivingEntity target, World world) {
+        System.out.println("Activating: " + getClass().getSimpleName());
         Profiler.profile("flyingActivate");
         Bat bat = world.spawn(target.getLocation(), Bat.class);
         bat.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 0), true);

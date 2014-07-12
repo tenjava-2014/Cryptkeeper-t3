@@ -38,6 +38,7 @@ public class TeleportAction extends ActionHandler<LivingEntity> {
 
     @Override
     public void activate(LivingEntity target, World world) {
+        System.out.println("Activating: " + getClass().getSimpleName());
         Profiler.profile("teleportActivate");
         Location end = target.getLocation().add((random.nextBoolean() ? -1 : 1) * random.nextInt(maxRange), 0, (random.nextBoolean() ? -1 : 1) * random.nextInt(maxRange));
         target.teleport(end);

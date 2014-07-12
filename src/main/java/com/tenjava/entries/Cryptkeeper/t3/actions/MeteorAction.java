@@ -84,6 +84,7 @@ public class MeteorAction extends ActionHandler<Player> implements Listener {
 
     @Override
     public void activate(Player target, World world) {
+        System.out.println("Activating: " + getClass().getSimpleName());
         Location location = target.getLocation();
         location.setY(255);
         location.add((random.nextBoolean() ? -1 : 1) * random.nextInt(25), 0, (random.nextBoolean() ? -1 : 1) * random.nextInt(25));

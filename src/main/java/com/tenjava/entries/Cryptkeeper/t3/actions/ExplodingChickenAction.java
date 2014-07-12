@@ -27,6 +27,7 @@ public class ExplodingChickenAction extends ActionHandler<LivingEntity> {
 
     @Override
     public void activate(LivingEntity target, World world) {
+        System.out.println("Activating: " + getClass().getSimpleName());
         target.damage(target.getHealth());
         target.getWorld().createExplosion(target.getLocation(), random.nextFloat() + 1F, true);
     }
