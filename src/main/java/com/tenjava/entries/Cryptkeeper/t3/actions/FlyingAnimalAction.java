@@ -7,7 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Bat;
-import org.bukkit.entity.Chicken;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.potion.PotionEffect;
@@ -56,8 +55,6 @@ public class FlyingAnimalAction implements ActionHandler<LivingEntity>, Runnable
         if (!types.contains(target.getType()))
             return false;
         if (!worlds.contains(world.getName()))
-            return false;
-        if (!(target instanceof Chicken))
             return false;
         //return RANDOM.nextDouble() <= chance;
         return true;
