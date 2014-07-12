@@ -37,7 +37,7 @@ diamondEnvironment:
 
 sandEnvironment:
     materials:
-        - SAND
+        - CACTUS
         - SANDSTONE
     entities:
         - WITCH
@@ -126,7 +126,7 @@ netherEnvironment:
 airEnvironment:
     materials:
         - AIR
-    chance: 0.3
+    chance: 0.15
     canSpawn: false
 
 sectionHeight: 24

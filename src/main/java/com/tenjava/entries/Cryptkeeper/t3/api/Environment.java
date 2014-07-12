@@ -34,8 +34,8 @@ public class Environment {
         }
     }
 
-    public Material getMaterial() {
-        return materials.get(random.nextInt(materials.size()));
+    public List<Material> getMaterials() {
+        return materials;
     }
 
     public boolean canSpawn() {
@@ -48,5 +48,13 @@ public class Environment {
 
     public List<EntityType> getEntities() {
         return entities;
+    }
+
+    @Override
+    public String toString() {
+        return "Environment{" +
+                "materials=" + materials +
+                ", entities=" + entities +
+                '}';
     }
 }
