@@ -11,12 +11,12 @@ public class SpawnListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        event.getPlayer().teleport(Plugin.getInstance().getWorld().getSpawnLocation());
+        event.getPlayer().teleport(Plugin.getInstance().getGenerator().getSpawnLocation());
     }
 
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent event) {
-        event.setRespawnLocation(Plugin.getInstance().getWorld().getSpawnLocation());
+        event.setRespawnLocation(Plugin.getInstance().getGenerator().getSpawnLocation());
     }
 
     @EventHandler(ignoreCancelled = true)

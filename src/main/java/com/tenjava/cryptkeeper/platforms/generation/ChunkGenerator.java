@@ -88,6 +88,11 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
         return environments;
     }
 
+    /**
+     * Returns the preferred spawn point since Vanilla handles it in a messy way.
+     *
+     * @return
+     */
     public Location getSpawnLocation() {
         return spawnLocation;
     }

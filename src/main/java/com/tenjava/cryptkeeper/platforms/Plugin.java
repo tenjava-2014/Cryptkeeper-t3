@@ -28,6 +28,7 @@ public class Plugin extends JavaPlugin {
                 Location spawn = generator.getSpawnLocation();
                 getWorld().setSpawnLocation(spawn.getBlockX(), spawn.getBlockY(), spawn.getBlockX());
                 getWorld().setKeepSpawnInMemory(true);
+                getWorld().setSpawnFlags(false, false);
             }
         });
     }
@@ -41,7 +42,18 @@ public class Plugin extends JavaPlugin {
         return getServer().getWorld(getConfig().getString("targetWorld"));
     }
 
+    public ChunkGenerator getGenerator() {
+        return generator;
+    }
+
     public static Plugin getInstance() {
         return instance;
+    }
+
+    @Override
+    public String toString() {
+        return "Plugin{" +
+                "generator=" + generator +
+                '}';
     }
 }

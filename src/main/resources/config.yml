@@ -101,6 +101,7 @@ woodEnvironment:
     entities:
         - SPIDER
         - CAVE_SPIDER
+        - SILVERFISH
     chance: 0.005
 
 iceEnvironment:
@@ -121,6 +122,10 @@ dirtEnvironment:
         - DIRT
         - SOIL
         - GRASS
+    entities:
+        - COW
+        - PIG
+        - CHICKEN
     chance: 0.08
 
 netherEnvironment:
@@ -138,12 +143,6 @@ lavaEnvironment:
         - STATIONARY_LAVA
         - OBSIDIAN
     chance: 0.03
-
-airEnvironment:
-    materials:
-        - AIR
-    chance: 0
-    canSpawn: false
 
 startY: 64
 minHeight: 2
