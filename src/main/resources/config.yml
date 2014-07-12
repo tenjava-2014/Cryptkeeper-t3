@@ -92,5 +92,27 @@ random_jockeys:
         - CAVE_SPIDER
         - CHICKEN
 
+mob_names:
+    names:
+        - Bob
+        - Roberto
+        - Jack
+        - Joe
+        - Jill
+        - Juan
+        - Pablo
+        - Mrs.
+        - Mr.
+        - YOLO
+        - Swag
+        - Felipe
+        - John
+        - Alex
+        - Eugene
+        - Doge
+        - Jamie
+        - Albert
+        - Herobrine
+
 disabled:
     - example_action

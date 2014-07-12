@@ -1,21 +1,40 @@
 package com.tenjava.entries.Cryptkeeper.t3.actions;
 
+import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import com.tenjava.entries.Cryptkeeper.t3.api.EntityActionHandler;
 import com.tenjava.entries.Cryptkeeper.t3.util.Util;
+import org.bukkit.Bukkit;
+import org.bukkit.DyeColor;
+import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 public class PoopingAnimalAction extends EntityActionHandler<LivingEntity> {
 
     @Override
     public void register() {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Plugin.getInstance(), new Runnable() {
 
+            @Override
+            public void run() {
+                for (LivingEntity entity : Util.getActiveEntities(worlds)) {
+                    if (canActivate(entity, entity.getWorld())) {
+                        activate(entity, entity.getWorld());
+                    }
+                }
+            }
+        }, 40L, 40L);
     }
 
     @Override
     public void activate(LivingEntity target, World world) {
-        String name = Util.getName(target);
+        world.playSound(target.getLocation(), Sound.CHICKEN_EGG_POP, 1F, 1F);
+        for (int i = 0; i < 3 + random.nextInt(4); i++) {
+            world.dropItem(target.getLocation(), new ItemStack(Material.INK_SACK, 1, DyeColor.BROWN.getDyeData()));
+        }
     }
 
     @Override
@@ -27,7 +46,7 @@ public class PoopingAnimalAction extends EntityActionHandler<LivingEntity> {
         if (!target.isOnGround())
             return false;
         if (target instanceof Player)
-            return ((Player) target).getFoodLevel() <= 5;
+            return ((Player) target).getFoodLevel() <= 5 && random.nextDouble() <= chance;
         return random.nextDouble() <= chance;
     }
 

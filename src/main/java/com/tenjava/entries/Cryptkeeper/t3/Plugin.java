@@ -5,6 +5,7 @@ import com.tenjava.entries.Cryptkeeper.t3.actions.FlippedMobAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.FlyingAnimalAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.LeapingAnimalAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.MobColumnAction;
+import com.tenjava.entries.Cryptkeeper.t3.actions.MobNameAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.PoopingAnimalAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.ShootingEntitiesAction;
 import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
@@ -31,6 +32,7 @@ public class Plugin extends JavaPlugin {
         actions.add(new MobColumnAction());
         actions.add(new ShootingEntitiesAction());
         actions.add(new FlippedMobAction());
+        actions.add(new MobNameAction());
 
         Iterator<ActionHandler> itl = actions.iterator();
         while (itl.hasNext()) {

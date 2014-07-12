@@ -7,7 +7,6 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,11 +49,5 @@ public class Util {
             }
         }
         return safe;
-    }
-
-    public static String getName(LivingEntity entity) {
-        if (entity instanceof Player)
-            return ((Player) entity).getDisplayName();
-        return entity.getCustomName();
     }
 }
