@@ -1,6 +1,7 @@
 package com.tenjava.entries.Cryptkeeper.t3.util;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -9,6 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Util {
+
+    public static Entity getRiding(Entity entity, Entity fallback) {
+        while (entity.getVehicle() != null)
+            entity = entity.getVehicle();
+        if (entity == null)
+            entity = fallback;
+        return entity;
+    }
 
     public static List<EntityType> getSafeEntities(List<String> list) {
         List<EntityType> safe = new ArrayList<>();

@@ -6,6 +6,7 @@ import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.util.Vector;
 
 import java.util.List;
 import java.util.Random;
@@ -27,7 +28,7 @@ public class LeapingAnimalAction implements ActionHandler<LivingEntity> {
 
     @Override
     public void activate(LivingEntity target, World world) {
-
+        target.setVelocity(new Vector(0, 1, 0));
     }
 
     @Override

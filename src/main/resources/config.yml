@@ -25,3 +25,18 @@ vampire_pig:
     chance: 0.1
     worlds:
         - world
+
+flying_animal:
+    chance: 0.01
+    entities:
+        - COW
+        - PIG
+        - CREEPER
+        - SKELETON
+        - SPIDER
+        - ZOMBIE
+    worlds:
+        - world
+
+disabled:
+    - example_action

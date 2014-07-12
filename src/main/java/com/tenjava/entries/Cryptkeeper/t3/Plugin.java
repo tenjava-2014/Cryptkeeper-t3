@@ -26,7 +26,8 @@ public class Plugin extends JavaPlugin {
         addHandler(new VampirePigAction());
 
         for (ActionHandler handler : actions) {
-            handler.load(getConfig().getConfigurationSection(handler.getSectionName()));
+            if (!getConfig().getStringList("disabled").contains(handler.getSectionName()))
+                handler.load(getConfig().getConfigurationSection(handler.getSectionName()));
         }
     }
 
