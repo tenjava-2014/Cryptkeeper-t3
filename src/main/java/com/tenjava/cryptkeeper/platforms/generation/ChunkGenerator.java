@@ -2,36 +2,27 @@ package com.tenjava.cryptkeeper.platforms.generation;
 
 import com.tenjava.cryptkeeper.platforms.Plugin;
 import com.tenjava.cryptkeeper.platforms.api.Environment;
+import com.tenjava.cryptkeeper.platforms.generation.populators.FlowerPopulator;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.EntityType;
+import org.bukkit.generator.BlockPopulator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 
     private final Random random = new Random();
     private final List<Environment> environments = new ArrayList<>();
-    private final Map<Integer, List<Integer>> xy = new HashMap<>();
     private Location spawnLocation;
 
     @Override
     public byte[] generate(World world, Random random, int cx, int cz) {
-        if (!xy.containsKey(cx)) {
-            xy.put(cx, new ArrayList<Integer>());
-        }
-        if (xy.get(cx).contains(cz)) {
-            System.out.println("Duplicate!");
-        } else {
-            xy.get(cx).add(cz);
-        }
         byte[] blocks = new byte[32768];
         int minHeight = Plugin.getInstance().getConfig().getInt("minHeight");
         int maxHeight = Plugin.getInstance().getConfig().getInt("maxHeight");
@@ -50,6 +41,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
                 for (int z = 0; z < 16; z++) {
                     Location center = new Location(world, 8, y, 8);
                     Location current = new Location(world, x, y, z);
+
                     if (y >= targetY && y <= targetY + targetHeight && random.nextBoolean()) {
                         if (current.distanceSquared(center) <= Math.pow(5 + random.nextInt(4), 2)) {
                             blocks[(x * 16 + z) * 128 + y] = (byte) environment.getMaterials().get(random.nextInt(environment.getMaterials().size())).getId();
@@ -64,7 +56,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
             for (EntityType type : environment.getEntities()) {
                 int x = random.nextInt(16);
                 int z = random.nextInt(16);
-                Block highest = world.getHighestBlockAt(x, z);
+                Block highest = world.getHighestBlockAt(cx + x, cz + z);
 
                 if (highest.getType().isSolid()) {
                     world.spawnEntity(highest.getLocation().add(0, 2, 0), type);
@@ -73,6 +65,13 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
         }
 
         return blocks;
+    }
+
+    @Override
+    public List<BlockPopulator> getDefaultPopulators(World world) {
+        List<BlockPopulator> blockPopulators = new ArrayList<>();
+        blockPopulators.add(new FlowerPopulator());
+        return blockPopulators;
     }
 
     @Override
