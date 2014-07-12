@@ -2,16 +2,12 @@ package com.tenjava.cryptkeeper.platforms.generation;
 
 import com.tenjava.cryptkeeper.platforms.Plugin;
 import com.tenjava.cryptkeeper.platforms.api.Environment;
-import com.tenjava.cryptkeeper.platforms.generation.populators.PyramidPopulator;
-import com.tenjava.cryptkeeper.platforms.generation.populators.TentPopulator;
-import com.tenjava.cryptkeeper.platforms.generation.populators.TorchPopulator;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.EntityType;
-import org.bukkit.generator.BlockPopulator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +21,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 
     @Override
     public byte[] generate(World world, Random random, int cx, int cz) {
+        long time = System.currentTimeMillis();
         byte[] blocks = new byte[32768];
         int minHeight = Plugin.getInstance().getConfig().getInt("minHeight");
         int maxHeight = Plugin.getInstance().getConfig().getInt("maxHeight");
@@ -37,6 +34,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
             spawnLocation.getBlock().getRelative(BlockFace.DOWN).setType(Material.BEDROCK);
             world.setSpawnLocation(cx + 7, targetY + targetHeight + 3, cz + 7);
         }
+
+        time = System.currentTimeMillis() - time;
+        long time2 = System.currentTimeMillis();
 
         for (int y = 0; y < 128; y++) {
             for (int x = 0; x < 16; x++) {
@@ -52,6 +52,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
             }
         }
 
+        time2 = System.currentTimeMillis() - time2;
+        long time3 = System.currentTimeMillis();
+
         int passovers = random.nextInt(2) + 1;
         for (int i = 0; i < passovers; i++) {
             for (EntityType type : environment.getEntities()) {
@@ -65,16 +68,11 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
             }
         }
 
-        return blocks;
-    }
+        time3 = System.currentTimeMillis() - time3;
 
-    @Override
-    public List<BlockPopulator> getDefaultPopulators(World world) {
-        List<BlockPopulator> list = new ArrayList<>();
-        list.add(new TentPopulator());
-        list.add(new PyramidPopulator());
-        list.add(new TorchPopulator());
-        return list;
+        System.out.println(time + " - " + time2 + " - " + time3);
+
+        return blocks;
     }
 
     @Override
