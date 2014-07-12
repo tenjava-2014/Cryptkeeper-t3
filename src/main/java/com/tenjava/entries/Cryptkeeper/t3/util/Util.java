@@ -2,6 +2,7 @@ package com.tenjava.entries.Cryptkeeper.t3.util;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
@@ -20,8 +21,15 @@ public class Util {
         for (World world : Bukkit.getWorlds()) {
             if (!allowed.contains(world.getName()))
                 continue;
-            if (!world.getPlayers().isEmpty())
-                entities.addAll(world.getLivingEntities());
+            if (world.getPlayers().isEmpty())
+                continue;
+            for (Chunk chunk : world.getLoadedChunks()) {
+                for (Entity entity : chunk.getEntities()) {
+                    if (entity instanceof LivingEntity) {
+                        entities.add((LivingEntity) entity);
+                    }
+                }
+            }
         }
         Profiler.profile("getActive");
         return entities;
