@@ -1,7 +1,9 @@
 package com.tenjava.entries.Cryptkeeper.t3;
 
+import com.tenjava.entries.Cryptkeeper.t3.actions.ExplodingChickenAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.LeapingAnimalAction;
 import com.tenjava.entries.Cryptkeeper.t3.actions.PoopingAnimalAction;
+import com.tenjava.entries.Cryptkeeper.t3.actions.VampirePigAction;
 import com.tenjava.entries.Cryptkeeper.t3.api.ActionHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,18 +20,10 @@ public class Plugin extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        /*try {
-            File file = new File(getDataFolder(), "config.yml");
-            if (!file.exists()) {
-                saveDefaultConfig();
-            }
-        } catch (Exception ex) {
-            getLogger().severe("Failed to save/load configuration file!");
-            ex.printStackTrace();
-        }*/
-
-        actions.add(new PoopingAnimalAction());
-        actions.add(new LeapingAnimalAction());
+        addHandler(new ExplodingChickenAction());
+        addHandler(new LeapingAnimalAction());
+        addHandler(new PoopingAnimalAction());
+        addHandler(new VampirePigAction());
 
         for (ActionHandler handler : actions) {
             handler.load(getConfig().getConfigurationSection(handler.getSectionName()));
@@ -40,6 +34,11 @@ public class Plugin extends JavaPlugin {
     public void onDisable() {
         HandlerList.unregisterAll(this);
         getServer().getScheduler().cancelTasks(this);
+    }
+
+    private void addHandler(ActionHandler handler) {
+        getLogger().info("Loaded: " + handler.getClass().getSimpleName());
+        actions.add(handler);
     }
 
     public static Plugin getInstance() {

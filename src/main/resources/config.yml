@@ -1,13 +1,22 @@
 leaping_animal:
     chance: 0.05
+    worlds:
+        - world
     entities:
         - ZOMBIE
         - CREEPER
 
 pooping_animal:
     chance: 0.1
+    worlds:
+        - world
     entities:
         - COW
         - PIG
         - CHICKEN
         - CREEPER
+
+exploding_chicken:
+    chance: 0.2
+    worlds:
+        - world
