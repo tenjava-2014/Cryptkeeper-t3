@@ -1,4 +1,4 @@
-package com.tenjava.entries.Cryptkeeper.t3;
+package com.tenjava.entries.Cryptkeeper.t3.utilities;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import org.bukkit.Bukkit;

@@ -2,7 +2,13 @@ package com.tenjava.entries.Cryptkeeper.t3.api;
 
 import org.bukkit.Material;
 
-public interface Environment {
+import java.util.Random;
 
-    public Material getMaterial(int y);
+public abstract class Environment {
+
+    protected final Random random = new Random();
+
+    public abstract Material getMaterial(int y);
+
+    public abstract double getChance();
 }

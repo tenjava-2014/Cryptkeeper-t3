@@ -2,7 +2,7 @@ package com.tenjava.entries.Cryptkeeper.t3.actions;
 
 import com.tenjava.entries.Cryptkeeper.t3.Plugin;
 import com.tenjava.entries.Cryptkeeper.t3.api.EntityActionHandler;
-import com.tenjava.entries.Cryptkeeper.t3.Util;
+import com.tenjava.entries.Cryptkeeper.t3.utilities.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Bat;

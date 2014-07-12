@@ -10,6 +10,6 @@ public class CakePopulator extends BlockPopulator {
 
     @Override
     public void populate(World world, Random random, Chunk chunk) {
-        
+
     }
 }

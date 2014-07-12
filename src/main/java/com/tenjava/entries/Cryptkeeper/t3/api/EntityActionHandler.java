@@ -1,6 +1,6 @@
 package com.tenjava.entries.Cryptkeeper.t3.api;
 
-import com.tenjava.entries.Cryptkeeper.t3.Util;
+import com.tenjava.entries.Cryptkeeper.t3.utilities.Util;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
 
