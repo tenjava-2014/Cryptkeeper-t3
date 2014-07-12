@@ -27,7 +27,7 @@ vampire_pig:
         - world
 
 flying_animal:
-    chance: 0.1
+    chance: 0.02
     entities:
         - COW
         - PIG

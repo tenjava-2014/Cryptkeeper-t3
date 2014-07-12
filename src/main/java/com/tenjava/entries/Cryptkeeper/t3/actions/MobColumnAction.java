@@ -53,7 +53,7 @@ public class MobColumnAction extends ActionHandler<LivingEntity> implements List
             return false;
         if (!types.contains(target.getType()))
             return false;
-        return true;
+        return random.nextDouble() <= chance;
     }
 
     @Override
